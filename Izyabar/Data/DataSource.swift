@@ -12,19 +12,17 @@ final class DataSource: NSObject {
     
     var items: [CocktailItem] = []
     private let gridDelegate = GridCollectionViewDelegate()
-    private var navigationController: UINavigationController?
     
-    func attach(to view: UICollectionView, navigationController: UINavigationController?) {
+    func attach(to view: UICollectionView) {
         // Setup itself as table data source (Implementation in separated extension)
         view.dataSource = self
         view.register(UINib(nibName:"CocktailCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: CocktailCollectionViewCell.identifier)
         view.delegate = gridDelegate
-        self.navigationController = navigationController
     }
     
 }
 
-extension DataSource: UICollectionViewDataSource, UICollectionViewDelegate {
+extension DataSource: UICollectionViewDataSource {
     
     // Return elements count that must be displayed in table
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -37,15 +35,5 @@ extension DataSource: UICollectionViewDataSource, UICollectionViewDelegate {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CocktailCollectionViewCell.identifier, for: indexPath) as! CocktailCollectionViewCell
         cell.configure(with: item)
         return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        showSecondViewController()
-    }
-    
-    @IBAction func showSecondViewController() {
-        let storyboard = UIStoryboard(name: "CocktailsList", bundle: nil)
-        let secondVC = storyboard.instantiateViewController(identifier: "CocktailDetailsViewController")
-        navigationController?.show(secondVC, sender: self)
     }
 }
