@@ -18,6 +18,10 @@ final class DataSource: NSObject {
         view.dataSource = self
         view.register(UINib(nibName:"CocktailCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: CocktailCollectionViewCell.identifier)
         view.delegate = gridDelegate
+        IzyabarService.loadCocktails { result in
+            self.items = result
+            view.reloadData()
+        }
     }
     
 }

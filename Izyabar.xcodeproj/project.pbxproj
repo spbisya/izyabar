@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,9 +15,11 @@
 		4B2CA9A925D338FB00C8B391 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B2CA9A725D338FB00C8B391 /* LaunchScreen.storyboard */; };
 		4B2CA9B425D5B42D00C8B391 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2CA9B325D5B42D00C8B391 /* DataSource.swift */; };
 		4B6CA5CF25DC6AD900DBA185 /* CocktailItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6CA5CE25DC6AD900DBA185 /* CocktailItem.swift */; };
-		4B6CA5D125DC6CF100DBA185 /* CocktailsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6CA5D025DC6CF100DBA185 /* CocktailsProvider.swift */; };
 		4B6CA5D425DC6D7B00DBA185 /* GridCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6CA5D325DC6D7B00DBA185 /* GridCollectionViewDelegate.swift */; };
 		4B6CA5FF25E1347900DBA185 /* CocktailDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6CA5FE25E1347900DBA185 /* CocktailDetailsViewController.swift */; };
+		4B6CA60225E42A4700DBA185 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6CA60125E42A4600DBA185 /* Config.swift */; };
+		4B6CA60425E430E300DBA185 /* IzyabarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6CA60325E430E300DBA185 /* IzyabarService.swift */; };
+		4B6CA60725E43CB500DBA185 /* ReflectedStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6CA60625E43CB500DBA185 /* ReflectedStringConvertible.swift */; };
 		4B8034D525DB014E00FE00AB /* CocktailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8034D325DB014E00FE00AB /* CocktailCollectionViewCell.swift */; };
 		4B8034D625DB014E00FE00AB /* CocktailCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B8034D425DB014E00FE00AB /* CocktailCollectionViewCell.xib */; };
 		88EA3F32F240C9D74E1C39B9 /* Pods_Izyabar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 671BCE4A6376B3FBD1FFE27A /* Pods_Izyabar.framework */; };
@@ -34,9 +36,11 @@
 		4B2CA9AA25D338FB00C8B391 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4B2CA9B325D5B42D00C8B391 /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		4B6CA5CE25DC6AD900DBA185 /* CocktailItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailItem.swift; sourceTree = "<group>"; };
-		4B6CA5D025DC6CF100DBA185 /* CocktailsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailsProvider.swift; sourceTree = "<group>"; };
 		4B6CA5D325DC6D7B00DBA185 /* GridCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridCollectionViewDelegate.swift; sourceTree = "<group>"; };
 		4B6CA5FE25E1347900DBA185 /* CocktailDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailDetailsViewController.swift; sourceTree = "<group>"; };
+		4B6CA60125E42A4600DBA185 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		4B6CA60325E430E300DBA185 /* IzyabarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IzyabarService.swift; sourceTree = "<group>"; };
+		4B6CA60625E43CB500DBA185 /* ReflectedStringConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReflectedStringConvertible.swift; sourceTree = "<group>"; };
 		4B8034D325DB014E00FE00AB /* CocktailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailCollectionViewCell.swift; sourceTree = "<group>"; };
 		4B8034D425DB014E00FE00AB /* CocktailCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CocktailCollectionViewCell.xib; sourceTree = "<group>"; };
 		671BCE4A6376B3FBD1FFE27A /* Pods_Izyabar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Izyabar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -62,7 +66,6 @@
 				BB89007151B8B3EC60C117A8 /* Pods-Izyabar.debug.xcconfig */,
 				F61158B8DEF2B61D7F010270 /* Pods-Izyabar.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -87,6 +90,8 @@
 		4B2CA99B25D338F900C8B391 /* Izyabar */ = {
 			isa = PBXGroup;
 			children = (
+				4B6CA60525E43CA400DBA185 /* Helpers */,
+				4B6CA60025E42A3900DBA185 /* Network */,
 				4B8034D825DC5FAB00FE00AB /* Data */,
 				4B8034D925DC5FC200FE00AB /* Storyboards */,
 				4B8034D725DC5F4300FE00AB /* CocktailsList */,
@@ -116,6 +121,23 @@
 			path = CocktailDetails;
 			sourceTree = "<group>";
 		};
+		4B6CA60025E42A3900DBA185 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				4B6CA60125E42A4600DBA185 /* Config.swift */,
+				4B6CA60325E430E300DBA185 /* IzyabarService.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		4B6CA60525E43CA400DBA185 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				4B6CA60625E43CB500DBA185 /* ReflectedStringConvertible.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		4B8034D025DAFE9C00FE00AB /* CocktailCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -139,7 +161,6 @@
 			children = (
 				4B6CA5CD25DC6ACB00DBA185 /* Models */,
 				4B2CA9B325D5B42D00C8B391 /* DataSource.swift */,
-				4B6CA5D025DC6CF100DBA185 /* CocktailsProvider.swift */,
 				4B6CA5D325DC6D7B00DBA185 /* GridCollectionViewDelegate.swift */,
 			);
 			path = Data;
@@ -279,11 +300,13 @@
 				4B2CA9A125D338F900C8B391 /* CocktailsListViewController.swift in Sources */,
 				4B2CA99D25D338F900C8B391 /* AppDelegate.swift in Sources */,
 				4B2CA9B425D5B42D00C8B391 /* DataSource.swift in Sources */,
-				4B6CA5D125DC6CF100DBA185 /* CocktailsProvider.swift in Sources */,
 				4B8034D525DB014E00FE00AB /* CocktailCollectionViewCell.swift in Sources */,
 				4B2CA99F25D338F900C8B391 /* SceneDelegate.swift in Sources */,
+				4B6CA60725E43CB500DBA185 /* ReflectedStringConvertible.swift in Sources */,
 				4B6CA5D425DC6D7B00DBA185 /* GridCollectionViewDelegate.swift in Sources */,
+				4B6CA60225E42A4700DBA185 /* Config.swift in Sources */,
 				4B6CA5CF25DC6AD900DBA185 /* CocktailItem.swift in Sources */,
+				4B6CA60425E430E300DBA185 /* IzyabarService.swift in Sources */,
 				4B6CA5FF25E1347900DBA185 /* CocktailDetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -21,8 +21,6 @@ class CocktailsListViewController: UIViewController {
         setupGradient()
         
         dataSource.attach(to: cocktailsView)
-        // Setup data set
-        dataSource.items = CocktailsProvider.provideCocktails()
     }
     
     private func setupGradient(){
