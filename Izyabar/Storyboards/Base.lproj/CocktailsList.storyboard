@@ -4,7 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18091"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -19,9 +19,6 @@
                             <navigationBar contentMode="scaleToFill" translucent="NO" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4gc-yO-mGd">
                                 <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="414" id="H2z-zt-ixS"/>
-                                </constraints>
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <navigationItem title="Izya bar" largeTitleDisplayMode="always" id="ArS-l2-urh"/>
@@ -39,16 +36,7 @@
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
-                                        <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="CocktailCollectionViewCell" id="3gy-7c-9Ig" customClass="CocktailCollectionViewCell" customModule="Izyabar" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                                <autoresizingMask key="autoresizingMask"/>
-                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="fzm-mQ-VRQ">
-                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                </collectionViewCellContentView>
-                                            </collectionViewCell>
-                                        </cells>
+                                        <cells/>
                                     </collectionView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Xw-NO-RqW">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
@@ -75,13 +63,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="4gc-yO-mGd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="CWt-Jx-hon"/>
+                            <constraint firstItem="4gc-yO-mGd" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Iy6-K2-pco"/>
                             <constraint firstItem="ppq-zQ-4zo" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottomMargin" constant="34" id="OH2-hb-1Sz"/>
-                            <constraint firstItem="ppq-zQ-4zo" firstAttribute="top" secondItem="4gc-yO-mGd" secondAttribute="bottom" id="P6T-X1-rxR"/>
-                            <constraint firstItem="4gc-yO-mGd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="TEV-JJ-MLZ"/>
-                            <constraint firstItem="ppq-zQ-4zo" firstAttribute="leading" secondItem="4gc-yO-mGd" secondAttribute="leading" id="Viq-Un-b96"/>
-                            <constraint firstItem="ppq-zQ-4zo" firstAttribute="trailing" secondItem="4gc-yO-mGd" secondAttribute="trailing" id="YZP-iJ-EJy"/>
+                            <constraint firstItem="4gc-yO-mGd" firstAttribute="bottom" secondItem="ppq-zQ-4zo" secondAttribute="top" id="P6T-X1-rxR"/>
+                            <constraint firstItem="4gc-yO-mGd" firstAttribute="leading" secondItem="ppq-zQ-4zo" secondAttribute="leading" id="Viq-Un-b96"/>
+                            <constraint firstItem="4gc-yO-mGd" firstAttribute="trailing" secondItem="ppq-zQ-4zo" secondAttribute="trailing" id="YZP-iJ-EJy"/>
                             <constraint firstItem="4gc-yO-mGd" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="bFe-4q-ORy"/>
+                            <constraint firstItem="4gc-yO-mGd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="p7f-Oz-91e"/>
                         </constraints>
                     </view>
                     <connections>
@@ -93,5 +81,41 @@
             </objects>
             <point key="canvasLocation" x="18.840579710144929" y="87.723214285714278"/>
         </scene>
+        <!--Cocktail Details View Controller-->
+        <scene sceneID="cxE-JC-baW">
+            <objects>
+                <viewController id="Pvs-g9-LDd" customClass="CocktailDetailsViewController" customModule="Izyabar" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1S1-ma-2g5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Dk-vz-1wu" userLabel="CocktailName">
+                                <rect key="frame" x="20" y="64" width="374" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="GUV-bQ-c7h"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Dk-vz-1wu" firstAttribute="top" secondItem="GUV-bQ-c7h" secondAttribute="top" constant="20" id="SBf-Zh-ccp"/>
+                            <constraint firstItem="6Dk-vz-1wu" firstAttribute="leading" secondItem="GUV-bQ-c7h" secondAttribute="leading" constant="20" id="ogL-da-A0t"/>
+                            <constraint firstItem="GUV-bQ-c7h" firstAttribute="trailing" secondItem="6Dk-vz-1wu" secondAttribute="trailing" constant="20" id="ylf-qu-YGJ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cocktailNameLabel" destination="6Dk-vz-1wu" id="uxF-dq-V42"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qv3-Eh-AQW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="933" y="88"/>
+        </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

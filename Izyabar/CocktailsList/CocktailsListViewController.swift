@@ -20,10 +20,17 @@ class CocktailsListViewController: UIViewController {
         
         setupGradient()
         
-        dataSource.attach(to: cocktailsView)
+        dataSource.attach(to: cocktailsView, navigationController: self.navigationController)
         // Setup data set
         dataSource.items = CocktailsProvider.provideCocktails()
     }
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if let destination = segue.destination as? CocktailDetailsViewController,
+//           let index = collectionView.indexPathsForSelectedItems?.first {
+//                destination.selectedNumber = modelData[index.row]
+//            }
+//    }
     
     private func setupGradient(){
         let gradient = CAGradientLayer()
