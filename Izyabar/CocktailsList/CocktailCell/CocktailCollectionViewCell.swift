@@ -47,9 +47,9 @@ class CocktailCollectionViewCell: UICollectionViewCell {
     }
     
     func configure(with cocktailItem: CocktailItem){
-        cocktailImageView.image = cocktailItem.image
+//        cocktailImageView.image = cocktailItem.image
         nameLabel.text = cocktailItem.name
-        descriptionLabel.text = cocktailItem.description
+        descriptionLabel.text = cocktailItem.descriptionShort
     }
     
     class var identifier: String { return "CocktailCollectionViewCell" }
