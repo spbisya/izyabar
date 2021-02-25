@@ -7,5 +7,6 @@ target 'Izyabar' do
 
   # Pods for Izyabar
   pod 'Alamofire', '~> 5.2'
+  pod 'SkeletonView'
 
 end

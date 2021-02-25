@@ -20,6 +20,7 @@ struct IzyabarService {
                 result(coctailsParsedList)
             case .failure(let error):
                 print(error)
+                result(Array())
             }
         }
     }
