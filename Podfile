@@ -6,7 +6,8 @@ target 'Izyabar' do
   use_frameworks!
 
   # Pods for Izyabar
-  pod 'Alamofire', '~> 5.2'
+  pod 'Alamofire', '~> 5.0.0-rc.2'
+  pod 'AlamofireObjectMapper', '~> 6.2'
   pod 'SkeletonView'
 
 end

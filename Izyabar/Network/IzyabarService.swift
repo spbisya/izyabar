@@ -7,20 +7,18 @@
 
 import Foundation
 import Alamofire
+import AlamofireObjectMapper
 
 struct IzyabarService {
     
     static func loadCocktails(result: @escaping (Array<CocktailItem>) -> Void) {
-        AF.request(Config.baseURL+"/cocktails", method: .get, encoding: JSONEncoding.default).responseJSON { response in
-            switch response.result {
-            case .success(let json):
-                let responseJson = json as! NSDictionary
-                let cocktailsList = responseJson.mutableArrayValue(forKey: "cocktails")
-                let coctailsParsedList = cocktailsList.map { cocktail in CocktailItem(json: cocktail)}
-                result(coctailsParsedList)
+        AF.request(Config.baseURL+"/cocktails", method: .get, encoding: JSONEncoding.default).responseObject {
+            (response: AFDataResponse<Cocktails>) in
+            switch (response.result){
+            case .success(let cocktails):
+                result(cocktails.coctails ?? Array())
             case .failure(let error):
                 print(error)
-                result(Array())
             }
         }
     }
