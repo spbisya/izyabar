@@ -14,6 +14,12 @@ class GridCollectionViewDelegate: NSObject, UICollectionViewDelegateFlowLayout {
     private let minimumItemSpacing: CGFloat = 6
     private let minimumLineSpacing: CGFloat = 15
     
+    private var onCellClickClosure: ((_ index: Int) -> Void)? = nil
+    
+    func attachClickHandler(onCellClickClosure: @escaping (_ index: Int) -> Void){
+        self.onCellClickClosure = onCellClickClosure
+    }
+    
     // MARK: - UICollectionViewDelegateFlowLayout
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
@@ -38,5 +44,9 @@ class GridCollectionViewDelegate: NSObject, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return minimumLineSpacing
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        onCellClickClosure?(indexPath.row)
     }
 }

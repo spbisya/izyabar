@@ -21,6 +21,8 @@ class CocktailCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        self.isUserInteractionEnabled = true
+        
         cocktailImageView.layer.cornerRadius = 10
         cocktailImageView.clipsToBounds = true
         

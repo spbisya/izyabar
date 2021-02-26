@@ -11,14 +11,21 @@ import SkeletonView
 
 final class DataSource: NSObject {
     
-    var items: [CocktailItem] = []
+    private var items: [CocktailItem] = []
+    
     private let gridDelegate = GridCollectionViewDelegate()
     
-    func attach(to view: UICollectionView) {
+    func attach(to view: UICollectionView, onCellClickClosure: @escaping (CocktailItem) -> Void) {
         // Setup itself as table data source (Implementation in separated extension)
+        view.isUserInteractionEnabled = true
         view.dataSource = self
         view.register(UINib(nibName:"CocktailCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: CocktailCollectionViewCell.identifier)
+        
+        gridDelegate.attachClickHandler { index in
+            onCellClickClosure(self.items[index])
+        }
         view.delegate = gridDelegate
+        
         view.isSkeletonable = true
         view.showAnimatedSkeleton()
         IzyabarService.loadCocktails { result in
@@ -48,6 +55,8 @@ extension DataSource: SkeletonCollectionViewDataSource {
         let item = items[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CocktailCollectionViewCell.identifier, for: indexPath) as! CocktailCollectionViewCell
         cell.configure(with: item)
+        
         return cell
     }
+    
 }

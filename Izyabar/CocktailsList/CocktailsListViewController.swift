@@ -20,7 +20,13 @@ class CocktailsListViewController: UIViewController {
         
         setupGradient()
         
-        dataSource.attach(to: cocktailsView)
+        dataSource.attach(to: cocktailsView) { cocktail in
+            let alertController = UIAlertController(title: "iOScreator", message:
+                                                        "Hello, world! \(String(describing: cocktail.name))", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: .default))
+            
+            self.present(alertController, animated: true, completion: nil)
+        }
     }
     
     private func setupGradient(){
