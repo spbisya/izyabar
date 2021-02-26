@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Foundation
+import Nuke
 
 class CocktailCollectionViewCell: UICollectionViewCell {
     
@@ -47,7 +49,12 @@ class CocktailCollectionViewCell: UICollectionViewCell {
     }
     
     func configure(with cocktailItem: CocktailItem){
-//        cocktailImageView.image = cocktailItem.image
+        if let url = URL(string: cocktailItem.image ?? "") {
+            shadowView.isHidden = true
+            Nuke.loadImage(with: url, into: cocktailImageView, completion: {_ in
+                self.shadowView.isHidden = false
+            })
+        }
         nameLabel.text = cocktailItem.name
         descriptionLabel.text = cocktailItem.descriptionShort
     }

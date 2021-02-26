@@ -3,27 +3,31 @@ PODS:
   - AlamofireObjectMapper (6.2.0):
     - Alamofire (= 5.0.0-rc.2)
     - ObjectMapper (~> 3.5.1)
+  - Nuke (9.3.0)
   - ObjectMapper (3.5.3)
   - SkeletonView (1.13.0)
 
 DEPENDENCIES:
   - Alamofire (~> 5.0.0-rc.2)
   - AlamofireObjectMapper (~> 6.2)
+  - Nuke (~> 9.0)
   - SkeletonView
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - AlamofireObjectMapper
+    - Nuke
     - ObjectMapper
     - SkeletonView
 
 SPEC CHECKSUMS:
   Alamofire: f9450d3c7f6bea2ad62e7a541c3e9b186c7991d6
   AlamofireObjectMapper: 74d1440c92c42bbcc2b5f4dc81654ac095ec669f
+  Nuke: 56a7266398951d9af3a897a71a7b662344915ec5
   ObjectMapper: 97111c97e054a6ee25917662106689f0b4127b37
   SkeletonView: 2b14cb767a7da384d17d5d7e1db0d55a6cf9566a
 
-PODFILE CHECKSUM: 7311bd5ee0a50937af777d3448d0e5331bcb796e
+PODFILE CHECKSUM: ec6d085c99c06c125837ec1a975dcb96d1b35e41
 
 COCOAPODS: 1.10.1
