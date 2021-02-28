@@ -14,11 +14,8 @@
         <array key="CeraPro-Medium.ttf">
             <string>CeraPro-Medium</string>
         </array>
-        <array key="cera_round_pro_regular.otf">
+        <array key="CeraRoundPro-Regular.otf">
             <string>CeraRoundPro-Regular</string>
-        </array>
-        <array key="cera_round_pro_thin.otf">
-            <string>CeraRoundPro-Thin</string>
         </array>
     </customFonts>
     <scenes>
@@ -86,7 +83,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gey-Q4-gp6">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1015.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="971"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iXj-WO-4j8" userLabel="CocktailImage">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="320"/>
@@ -149,14 +146,14 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cIZ-WN-GfG" userLabel="SummaryDescription">
-                                                <rect key="frame" x="20" y="524.5" width="374" height="440.5"/>
-                                                <mutableString key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</mutableString>
-                                                <fontDescription key="fontDescription" name="CeraRoundPro-Thin" family="Cera Round Pro" pointSize="18"/>
+                                                <rect key="frame" x="20" y="524.5" width="374" height="396"/>
+                                                <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
+                                                <fontDescription key="fontDescription" name="CeraRoundPro-Regular" family="Cera Round Pro" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l3l-hA-IIp" userLabel="FinalLineView">
-                                                <rect key="frame" x="20" y="980" width="374" height="1.5"/>
+                                                <rect key="frame" x="20" y="935.5" width="374" height="1.5"/>
                                                 <color key="backgroundColor" red="0.75294117650000003" green="0.75686274509999996" blue="0.76470588240000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1.5" id="MIs-40-O7k"/>
@@ -214,6 +211,7 @@
                     <connections>
                         <outlet property="cocktailImageView" destination="iXj-WO-4j8" id="eyB-WD-uF5"/>
                         <outlet property="cocktailNameLabel" destination="0W5-nJ-niH" id="0AU-4B-75O"/>
+                        <outlet property="descriptionLabel" destination="cIZ-WN-GfG" id="RAQ-hn-ev5"/>
                         <outlet property="strengthLabel" destination="9Hr-3W-23u" id="F1e-d0-LDe"/>
                         <outlet property="typeOfDrinkLabel" destination="Gsv-5h-lB7" id="wZc-KH-mcc"/>
                     </connections>

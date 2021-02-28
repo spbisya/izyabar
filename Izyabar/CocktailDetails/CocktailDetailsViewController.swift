@@ -14,6 +14,7 @@ class CocktailDetailsViewController: UIViewController {
     @IBOutlet weak var cocktailNameLabel: UILabel!
     @IBOutlet weak var typeOfDrinkLabel: UILabel!
     @IBOutlet weak var strengthLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
     
     var cocktail: CocktailItem!
     
@@ -21,6 +22,10 @@ class CocktailDetailsViewController: UIViewController {
         super.viewDidLoad()
         
         setupNavigationBar()
+        
+        if #available(iOS 14.0, *) {
+            descriptionLabel.lineBreakStrategy = .init()
+        }
         
         if let url = URL(string: cocktail.image ?? "") {
             Nuke.loadImage(with: url, into: cocktailImageView)
