@@ -15,6 +15,10 @@
 		4B2CA9A625D338FB00C8B391 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B2CA9A525D338FB00C8B391 /* Assets.xcassets */; };
 		4B2CA9A925D338FB00C8B391 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B2CA9A725D338FB00C8B391 /* LaunchScreen.storyboard */; };
 		4B2CA9B425D5B42D00C8B391 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2CA9B325D5B42D00C8B391 /* DataSource.swift */; };
+		4B5CF07525EC3138001AB98E /* CeraPro-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4B5CF07125EC3138001AB98E /* CeraPro-Bold.ttf */; };
+		4B5CF07625EC3138001AB98E /* cera_round_pro_light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4B5CF07225EC3138001AB98E /* cera_round_pro_light.otf */; };
+		4B5CF07725EC3138001AB98E /* CeraPro-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4B5CF07325EC3138001AB98E /* CeraPro-Medium.ttf */; };
+		4B5CF07825EC3138001AB98E /* cera_round_pro_regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4B5CF07425EC3138001AB98E /* cera_round_pro_regular.otf */; };
 		4B6CA5D425DC6D7B00DBA185 /* GridCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6CA5D325DC6D7B00DBA185 /* GridCollectionViewDelegate.swift */; };
 		4B6CA5FF25E1347900DBA185 /* CocktailDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6CA5FE25E1347900DBA185 /* CocktailDetailsViewController.swift */; };
 		4B6CA60225E42A4700DBA185 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6CA60125E42A4600DBA185 /* Config.swift */; };
@@ -36,6 +40,10 @@
 		4B2CA9A825D338FB00C8B391 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4B2CA9AA25D338FB00C8B391 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4B2CA9B325D5B42D00C8B391 /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
+		4B5CF07125EC3138001AB98E /* CeraPro-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CeraPro-Bold.ttf"; sourceTree = "<group>"; };
+		4B5CF07225EC3138001AB98E /* cera_round_pro_light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = cera_round_pro_light.otf; sourceTree = "<group>"; };
+		4B5CF07325EC3138001AB98E /* CeraPro-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CeraPro-Medium.ttf"; sourceTree = "<group>"; };
+		4B5CF07425EC3138001AB98E /* cera_round_pro_regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = cera_round_pro_regular.otf; sourceTree = "<group>"; };
 		4B6CA5D325DC6D7B00DBA185 /* GridCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridCollectionViewDelegate.swift; sourceTree = "<group>"; };
 		4B6CA5FE25E1347900DBA185 /* CocktailDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailDetailsViewController.swift; sourceTree = "<group>"; };
 		4B6CA60125E42A4600DBA185 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
@@ -99,10 +107,22 @@
 				4B2CA99C25D338F900C8B391 /* AppDelegate.swift */,
 				4B2CA99E25D338F900C8B391 /* SceneDelegate.swift */,
 				4B2CA9A525D338FB00C8B391 /* Assets.xcassets */,
+				4B5CF07025EC3138001AB98E /* fonts */,
 				4B2CA9A725D338FB00C8B391 /* LaunchScreen.storyboard */,
 				4B2CA9AA25D338FB00C8B391 /* Info.plist */,
 			);
 			path = Izyabar;
+			sourceTree = "<group>";
+		};
+		4B5CF07025EC3138001AB98E /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				4B5CF07125EC3138001AB98E /* CeraPro-Bold.ttf */,
+				4B5CF07225EC3138001AB98E /* cera_round_pro_light.otf */,
+				4B5CF07325EC3138001AB98E /* CeraPro-Medium.ttf */,
+				4B5CF07425EC3138001AB98E /* cera_round_pro_regular.otf */,
+			);
+			path = fonts;
 			sourceTree = "<group>";
 		};
 		4B6CA5CD25DC6ACB00DBA185 /* Models */ = {
@@ -242,8 +262,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B2CA9A925D338FB00C8B391 /* LaunchScreen.storyboard in Resources */,
+				4B5CF07825EC3138001AB98E /* cera_round_pro_regular.otf in Resources */,
 				4B2CA9A625D338FB00C8B391 /* Assets.xcassets in Resources */,
 				4B8034D625DB014E00FE00AB /* CocktailCollectionViewCell.xib in Resources */,
+				4B5CF07625EC3138001AB98E /* cera_round_pro_light.otf in Resources */,
+				4B5CF07525EC3138001AB98E /* CeraPro-Bold.ttf in Resources */,
+				4B5CF07725EC3138001AB98E /* CeraPro-Medium.ttf in Resources */,
 				4B2CA9A425D338F900C8B391 /* CocktailsList.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

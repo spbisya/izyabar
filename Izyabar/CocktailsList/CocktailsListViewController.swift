@@ -35,12 +35,14 @@ class CocktailsListViewController: UIViewController {
     }
     
     private func showCocktailDetailsController(with cocktail: CocktailItem) {
-        let storyboard = UIStoryboard(name: "CocktailsList", bundle: nil)
-        let secondVC = storyboard.instantiateViewController(identifier: CocktailDetailsViewController.identifier) as CocktailDetailsViewController
-        
-        secondVC.cocktailName = cocktail.name
-
-        show(secondVC, sender: self)
+        performSegue(withIdentifier: "SegueToCocktailVC", sender: cocktail)
+    }
+    
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let cocktailVC = segue.destination as? CocktailDetailsViewController, let cocktail = sender as? CocktailItem {
+            cocktailVC.cocktail = cocktail
+        }
     }
 }
-

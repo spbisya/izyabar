@@ -64,5 +64,12 @@
 	</array>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>cera_round_pro_light.otf</string>
+		<string>cera_round_pro_regular.otf</string>
+		<string>CeraPro-Bold.ttf</string>
+		<string>CeraPro-Medium.ttf</string>
+	</array>
 </dict>
 </plist>
