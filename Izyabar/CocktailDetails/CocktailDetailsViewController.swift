@@ -21,6 +21,7 @@ class CocktailDetailsViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    class var identifier: String { return "CocktailDetailsViewController" }
 
     /*
     // MARK: - Navigation
