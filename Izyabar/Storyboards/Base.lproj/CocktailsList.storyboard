@@ -63,6 +63,7 @@
                     <navigationItem key="navigationItem" title="Izya bar" largeTitleDisplayMode="always" id="NRg-cD-V8E"/>
                     <connections>
                         <outlet property="cocktailsView" destination="0zb-dK-fC8" id="ljr-PK-sqG"/>
+                        <outlet property="navigationItem" destination="NRg-cD-V8E" id="9Qk-Io-uZk"/>
                         <outlet property="shadowView" destination="2Xw-NO-RqW" id="gBH-pD-Vvm"/>
                         <segue destination="Pvs-g9-LDd" kind="show" identifier="SegueToCocktailVC" id="eym-K3-1II"/>
                     </connections>

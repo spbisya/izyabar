@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  Izyabar
+
+  Created by Izya Pitersky on 3/7/21.
+  
+*/
+
+"enter_code_title" = "Введите код";
+"enter_code_description" = "Для входа в режим редактирования коктейлей, введите код уровня Editor";
+"login" = "Войти";

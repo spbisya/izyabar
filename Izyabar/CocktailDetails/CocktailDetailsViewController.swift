@@ -18,6 +18,11 @@ class CocktailDetailsViewController: UIViewController {
     
     var cocktail: CocktailItem!
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        removeRightButton()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,14 +50,12 @@ class CocktailDetailsViewController: UIViewController {
         self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
+    private func removeRightButton(){
+        guard let subviews = self.navigationController?.navigationBar.subviews else { return }
+        subviews.forEach { view in
+            if (view.tag == Constants.LOGIN_BUTTON_TAG) {
+                view.removeFromSuperview()
+            }
+        }
+    }
 }
