@@ -40,7 +40,7 @@ class CocktailDetailsViewController: UIViewController {
         strengthLabel.text = "\(cocktail.strength ?? 0)"
     }
     
-    private func setupNavigationBar(){
+    private func setupNavigationBar() {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
@@ -50,10 +50,10 @@ class CocktailDetailsViewController: UIViewController {
         self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
     }
     
-    private func removeRightButton(){
+    private func removeRightButton() {
         guard let subviews = self.navigationController?.navigationBar.subviews else { return }
         subviews.forEach { view in
-            if (view.tag == Constants.LOGIN_BUTTON_TAG) {
+            if view.tag == Constants.loginButtonTag {
                 view.removeFromSuperview()
             }
         }

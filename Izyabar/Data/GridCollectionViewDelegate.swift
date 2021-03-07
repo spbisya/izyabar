@@ -14,9 +14,9 @@ class GridCollectionViewDelegate: NSObject, UICollectionViewDelegateFlowLayout {
     private let minimumItemSpacing: CGFloat = 6
     private let minimumLineSpacing: CGFloat = 15
     
-    private var onCellClickClosure: ((_ index: Int) -> Void)? = nil
+    private var onCellClickClosure: ((_ index: Int) -> Void)?
     
-    func attachClickHandler(onCellClickClosure: @escaping (_ index: Int) -> Void){
+    func attachClickHandler(onCellClickClosure: @escaping (_ index: Int) -> Void) {
         self.onCellClickClosure = onCellClickClosure
     }
     

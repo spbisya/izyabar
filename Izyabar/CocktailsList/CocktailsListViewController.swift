@@ -30,12 +30,12 @@ class CocktailsListViewController: UIViewController {
         }
     }
     
-    private func addLoginButton(){
+    private func addLoginButton() {
         let loginButton = UIButton()
         loginButton.setImage(UIImage(named: "Profile"), for: .normal)
         loginButton.contentVerticalAlignment = .fill
         loginButton.contentHorizontalAlignment = .fill
-        loginButton.tag = Constants.LOGIN_BUTTON_TAG
+        loginButton.tag = Constants.loginButtonTag
         
         navigationController?.navigationBar.addSubview(loginButton)
         
@@ -44,22 +44,22 @@ class CocktailsListViewController: UIViewController {
         UIHelper.applyImageInsetsAndConstraints(for: loginButton, rootView: navigationController?.navigationBar)
     }
     
-    @objc private func login(){
-        let ac = UIAlertController(title: "enter_code_title".localized, message: "enter_code_description".localized, preferredStyle: .alert)
-        ac.addTextField()
+    @objc private func login() {
+        let alertVC = UIAlertController(title: "enter_code_title".localized, message: "enter_code_description".localized, preferredStyle: .alert)
+        alertVC.addTextField()
         
-        let submitAction = UIAlertAction(title: "login".localized, style: .default) { [unowned ac] _ in
-            guard let textFields = ac.textFields else { return }
+        let submitAction = UIAlertAction(title: "login".localized, style: .default) { [unowned alertVC] _ in
+            guard let textFields = alertVC.textFields else { return }
             let answerField = textFields[0]
-            if (answerField.text == Constants.EDITOR_PASSCODE) {
+            if answerField.text == Constants.editorPasscode {
                 print("yes")
                 // TODO: add saving Editor's mode to prefs
             }
         }
         
-        ac.addAction(submitAction)
+        alertVC.addAction(submitAction)
         
-        present(ac, animated: true)
+        present(alertVC, animated: true)
     }
     
     // MARK: - Navigation

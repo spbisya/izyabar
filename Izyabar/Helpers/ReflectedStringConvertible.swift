@@ -7,7 +7,7 @@
 
 import Foundation
 
-public protocol ReflectedStringConvertible : CustomStringConvertible { }
+public protocol ReflectedStringConvertible: CustomStringConvertible { }
 
 extension ReflectedStringConvertible {
   public var description: String {

@@ -33,14 +33,14 @@ class CocktailCollectionViewCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        if(!wasShadowInitialized){
+        if !wasShadowInitialized {
             shadowView.layoutIfNeeded()
             createShadow()
             wasShadowInitialized = true
         }
     }
     
-    private func createShadow(){
+    private func createShadow() {
         shadowView.clipsToBounds = false
         shadowView.layer.cornerRadius = 10
         shadowView.layer.shadowColor = UIColor.black.cgColor
@@ -50,7 +50,7 @@ class CocktailCollectionViewCell: UICollectionViewCell {
         shadowView.layer.shadowPath = UIBezierPath(roundedRect: cocktailImageView.bounds, cornerRadius: 10).cgPath
     }
     
-    func configure(with cocktailItem: CocktailItem){
+    func configure(with cocktailItem: CocktailItem) {
         if let url = URL(string: cocktailItem.image ?? "") {
             shadowView.isHidden = true
             Nuke.loadImage(with: url, into: cocktailImageView, completion: {_ in

@@ -8,10 +8,10 @@
 import Foundation
 import ObjectMapper
 
-class Cocktails : Mappable {
-    var coctails: Array<CocktailItem>?
+class Cocktails: Mappable {
+    var coctails: [CocktailItem]?
     
-    required init?(map: Map){
+    required init?(map: Map) {
     }
     
     func mapping(map: Map) {
@@ -20,16 +20,16 @@ class Cocktails : Mappable {
 }
 
 class CocktailItem: Mappable {
-    var id: Int?
+    var id: Int? // swiftlint:disable:this variable_name
     var name: String?
     var descriptionShort: String?
     var descriptionLarge: String?
     var image: String?
     var imageLarge: String?
     var strength: Int?
-    var keywords: Array<String>?
+    var keywords: [String]?
     
-    required init?(map: Map){
+    required init?(map: Map) {
     }
     
     func mapping(map: Map) {
@@ -43,4 +43,3 @@ class CocktailItem: Mappable {
         keywords <- map["keywords"]
     }
 }
-

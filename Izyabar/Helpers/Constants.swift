@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct Constants {
-    static let LOGIN_BUTTON_TAG = 1
+enum Constants {
+    static let loginButtonTag = 1
     
-    static let EDITOR_PASSCODE = "154203"
+    static let editorPasscode = "154203"
 }
