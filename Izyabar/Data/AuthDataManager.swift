@@ -11,7 +11,7 @@ struct AuthDataManager {
     
     fileprivate static let isEditorModeEnabledStoreKey = "isEditorModeEnabledStoreKey"
     
-    static func enableEditorMode(){
+    static func enableEditorMode() {
         UserDefaults.standard.set(true, forKey: isEditorModeEnabledStoreKey)
     }
     

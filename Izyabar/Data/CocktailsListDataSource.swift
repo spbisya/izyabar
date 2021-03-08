@@ -12,19 +12,15 @@ import SkeletonView
 final class CocktailsListDataSource: NSObject {
     
     private var items: [CocktailItem] = []
-    
-    private weak var gridDelegate = GridCollectionViewDelegate()
+    private var onCellClickClosure: ( (CocktailItem) -> Void)?
     
     func attach(to view: UICollectionView, onCellClickClosure: @escaping (CocktailItem) -> Void) {
-        // Setup itself as table data source (Implementation in separated extension)
         view.isUserInteractionEnabled = true
         view.dataSource = self
         view.register(UINib(nibName: "CocktailCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: CocktailCollectionViewCell.identifier)
         
-        gridDelegate?.attachClickHandler { index in
-            onCellClickClosure(self.items[index])
-        }
-        view.delegate = gridDelegate
+        self.onCellClickClosure = onCellClickClosure
+        view.delegate = self
         
         view.isSkeletonable = true
         view.showAnimatedSkeleton()
@@ -35,6 +31,10 @@ final class CocktailsListDataSource: NSObject {
                 view.hideSkeleton(transition: .crossDissolve(0.25))
             }
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        onCellClickClosure?(self.items[indexPath.row])
     }
 }
 
