@@ -13,7 +13,7 @@ final class DataSource: NSObject {
     
     private var items: [CocktailItem] = []
     
-    private weak var gridDelegate = GridCollectionViewDelegate() // swiftlint:disable:this
+    private weak var gridDelegate = GridCollectionViewDelegate()
     
     func attach(to view: UICollectionView, onCellClickClosure: @escaping (CocktailItem) -> Void) {
         // Setup itself as table data source (Implementation in separated extension)
