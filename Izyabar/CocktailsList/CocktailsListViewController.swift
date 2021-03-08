@@ -16,7 +16,7 @@ class CocktailsListViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        addLoginButton()
+        setupRightButton()
     }
     
     override func viewDidLoad() {
@@ -26,20 +26,23 @@ class CocktailsListViewController: UIViewController {
         UIHelper.setupGradient(for: shadowView)
         
         dataSource.attach(to: cocktailsView) { cocktail in
-            self.showCocktailDetailsController(with: cocktail)
+            self.showCocktailDetailsViewController(with: cocktail)
         }
     }
     
-    private func addLoginButton() {
+    // MARK: - Private methods
+    private func setupRightButton() {
+        let isEditorModeEnabled = AuthDataManager.isEditorModeEnabled()
         let loginButton = UIButton()
-        loginButton.setImage(UIImage(named: "Profile"), for: .normal)
+        loginButton.setImage(UIImage(named: isEditorModeEnabled ? "AddCocktail" : "Profile"), for: .normal)
         loginButton.contentVerticalAlignment = .fill
         loginButton.contentHorizontalAlignment = .fill
         loginButton.tag = Constants.loginButtonTag
         
         navigationController?.navigationBar.addSubview(loginButton)
         
-        loginButton.addTarget(self, action: #selector(login), for: .touchUpInside)
+        let action = isEditorModeEnabled ? #selector(showAddCocktailViewController) : #selector(login)
+        loginButton.addTarget(self, action: action, for: .touchUpInside)
         
         UIHelper.applyImageInsetsAndConstraints(for: loginButton, rootView: navigationController?.navigationBar)
     }
@@ -52,8 +55,7 @@ class CocktailsListViewController: UIViewController {
             guard let textFields = alertVC.textFields else { return }
             let answerField = textFields[0]
             if answerField.text == Constants.editorPasscode {
-                print("yes")
-                // TODO: add saving Editor's mode to prefs
+                self.enableEditorMode()
             }
         }
         
@@ -62,9 +64,21 @@ class CocktailsListViewController: UIViewController {
         present(alertVC, animated: true)
     }
     
+    private func enableEditorMode() {
+        AuthDataManager.enableEditorMode()
+        self.navigationController?.removeRightButton()
+        self.setupRightButton()
+    }
+    
     // MARK: - Navigation
-    private func showCocktailDetailsController(with cocktail: CocktailItem) {
+    private func showCocktailDetailsViewController(with cocktail: CocktailItem) {
         performSegue(withIdentifier: "SegueToCocktailVC", sender: cocktail)
+    }
+    
+    @objc private func showAddCocktailViewController() {
+        print("add cocktail")
+        // TODO: add correct segue
+//        performSegue(withIdentifier: "SegueToCocktailVC", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

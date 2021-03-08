@@ -20,7 +20,7 @@ class CocktailDetailsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        removeRightButton()
+        self.navigationController?.removeRightButton()
     }
     
     override func viewDidLoad() {
@@ -48,14 +48,5 @@ class CocktailDetailsViewController: UIViewController {
         
         self.navigationItem.hidesBackButton = true
         self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
-    }
-    
-    private func removeRightButton() {
-        guard let subviews = self.navigationController?.navigationBar.subviews else { return }
-        subviews.forEach { view in
-            if view.tag == Constants.loginButtonTag {
-                view.removeFromSuperview()
-            }
-        }
     }
 }
