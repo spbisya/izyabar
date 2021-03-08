@@ -12,7 +12,7 @@ class CocktailsListViewController: UIViewController {
     @IBOutlet weak var shadowView: UIView!
     @IBOutlet weak var cocktailsView: UICollectionView!
     
-    private let dataSource = DataSource()
+    private let dataSource = CocktailsListDataSource()
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)

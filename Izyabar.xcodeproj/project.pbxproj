@@ -14,7 +14,7 @@
 		4B2CA9A425D338F900C8B391 /* CocktailsList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B2CA9A225D338F900C8B391 /* CocktailsList.storyboard */; };
 		4B2CA9A625D338FB00C8B391 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B2CA9A525D338FB00C8B391 /* Assets.xcassets */; };
 		4B2CA9A925D338FB00C8B391 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B2CA9A725D338FB00C8B391 /* LaunchScreen.storyboard */; };
-		4B2CA9B425D5B42D00C8B391 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2CA9B325D5B42D00C8B391 /* DataSource.swift */; };
+		4B2CA9B425D5B42D00C8B391 /* CocktailsListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2CA9B325D5B42D00C8B391 /* CocktailsListDataSource.swift */; };
 		4B5CF07525EC3138001AB98E /* CeraPro-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4B5CF07125EC3138001AB98E /* CeraPro-Bold.ttf */; };
 		4B5CF07625EC3138001AB98E /* CeraRoundPro-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4B5CF07225EC3138001AB98E /* CeraRoundPro-Light.otf */; };
 		4B5CF07725EC3138001AB98E /* CeraPro-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4B5CF07325EC3138001AB98E /* CeraPro-Medium.ttf */; };
@@ -30,6 +30,7 @@
 		4BC7F04A25F544E4003854C4 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC7F04925F544E4003854C4 /* UIHelper.swift */; };
 		4BC7F04C25F54F6F003854C4 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC7F04B25F54F6F003854C4 /* Extensions.swift */; };
 		4BC7F04E25F551D1003854C4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC7F04D25F551D1003854C4 /* Constants.swift */; };
+		4BC7F05125F622B5003854C4 /* AuthDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC7F05025F622B5003854C4 /* AuthDataManager.swift */; };
 		88EA3F32F240C9D74E1C39B9 /* Pods_Izyabar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 671BCE4A6376B3FBD1FFE27A /* Pods_Izyabar.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,7 +44,7 @@
 		4B2CA9A525D338FB00C8B391 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4B2CA9A825D338FB00C8B391 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4B2CA9AA25D338FB00C8B391 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4B2CA9B325D5B42D00C8B391 /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
+		4B2CA9B325D5B42D00C8B391 /* CocktailsListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailsListDataSource.swift; sourceTree = "<group>"; };
 		4B5CF07125EC3138001AB98E /* CeraPro-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CeraPro-Bold.ttf"; sourceTree = "<group>"; };
 		4B5CF07225EC3138001AB98E /* CeraRoundPro-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CeraRoundPro-Light.otf"; sourceTree = "<group>"; };
 		4B5CF07325EC3138001AB98E /* CeraPro-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CeraPro-Medium.ttf"; sourceTree = "<group>"; };
@@ -62,6 +63,7 @@
 		4BC7F04925F544E4003854C4 /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		4BC7F04B25F54F6F003854C4 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		4BC7F04D25F551D1003854C4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		4BC7F05025F622B5003854C4 /* AuthDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDataManager.swift; sourceTree = "<group>"; };
 		671BCE4A6376B3FBD1FFE27A /* Pods_Izyabar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Izyabar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB89007151B8B3EC60C117A8 /* Pods-Izyabar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Izyabar.debug.xcconfig"; path = "Target Support Files/Pods-Izyabar/Pods-Izyabar.debug.xcconfig"; sourceTree = "<group>"; };
 		F61158B8DEF2B61D7F010270 /* Pods-Izyabar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Izyabar.release.xcconfig"; path = "Target Support Files/Pods-Izyabar/Pods-Izyabar.release.xcconfig"; sourceTree = "<group>"; };
@@ -195,8 +197,9 @@
 			isa = PBXGroup;
 			children = (
 				4B6CA5CD25DC6ACB00DBA185 /* Models */,
-				4B2CA9B325D5B42D00C8B391 /* DataSource.swift */,
+				4B2CA9B325D5B42D00C8B391 /* CocktailsListDataSource.swift */,
 				4B6CA5D325DC6D7B00DBA185 /* GridCollectionViewDelegate.swift */,
+				4BC7F05025F622B5003854C4 /* AuthDataManager.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -358,7 +361,8 @@
 			files = (
 				4B2CA9A125D338F900C8B391 /* CocktailsListViewController.swift in Sources */,
 				4B2CA99D25D338F900C8B391 /* AppDelegate.swift in Sources */,
-				4B2CA9B425D5B42D00C8B391 /* DataSource.swift in Sources */,
+				4B2CA9B425D5B42D00C8B391 /* CocktailsListDataSource.swift in Sources */,
+				4BC7F05125F622B5003854C4 /* AuthDataManager.swift in Sources */,
 				4B1C29DD25E959D600CB892A /* Cocktails.swift in Sources */,
 				4B8034D525DB014E00FE00AB /* CocktailCollectionViewCell.swift in Sources */,
 				4B2CA99F25D338F900C8B391 /* SceneDelegate.swift in Sources */,

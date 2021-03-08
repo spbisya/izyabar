@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import SkeletonView
 
-final class DataSource: NSObject {
+final class CocktailsListDataSource: NSObject {
     
     private var items: [CocktailItem] = []
     
@@ -38,7 +38,7 @@ final class DataSource: NSObject {
     }
 }
 
-extension DataSource: SkeletonCollectionViewDataSource {
+extension CocktailsListDataSource: SkeletonCollectionViewDataSource {
     
     func collectionSkeletonView(_ skeletonView: UICollectionView, cellIdentifierForItemAt indexPath: IndexPath) -> ReusableCellIdentifier {
         return CocktailCollectionViewCell.identifier
