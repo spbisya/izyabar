@@ -19,7 +19,7 @@ class Cocktails: Mappable {
     }
 }
 
-class CocktailItem: Mappable {
+class CocktailItem: Mappable, Encodable {
     var id: Int? // swiftlint:disable:this variable_name
     var name: String?
     var descriptionShort: String?

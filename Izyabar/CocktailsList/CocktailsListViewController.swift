@@ -21,8 +21,8 @@ class CocktailsListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "back".localized, style: .plain, target: nil, action: nil)
+
         UIHelper.setupGradient(for: shadowView)
         
         dataSource.attach(to: cocktailsView) { cocktail in
@@ -75,10 +75,12 @@ class CocktailsListViewController: UIViewController {
         performSegue(withIdentifier: "SegueToCocktailVC", sender: cocktail)
     }
     
+    private func showAddCocktailsViewController() {
+        performSegue(withIdentifier: "SegueToAddCocktailVC", sender: self)
+    }
+    
     @objc private func showAddCocktailViewController() {
-        print("add cocktail")
-        // TODO: add correct segue
-//        performSegue(withIdentifier: "SegueToCocktailVC", sender: self)
+        showAddCocktailsViewController()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

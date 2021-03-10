@@ -9,3 +9,8 @@
 "enter_code_title" = "Enter code";
 "enter_code_description" = "To enter the cocktails editing mode, please, enter Editor's code";
 "login" = "Login";
+"add_cocktail" = "Add cocktail";
+"add" = "Add";
+"save" = "Save changes";
+"back" = "Back";
+"placeholder_description_large" = "Long description (2 sentences min)";
