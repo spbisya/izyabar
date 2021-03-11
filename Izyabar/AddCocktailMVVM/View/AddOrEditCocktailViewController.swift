@@ -9,6 +9,8 @@ import UIKit
 
 class AddOrEditCocktailViewController: UIViewController, UITextFieldDelegate {
     
+    // MARK: - IBOutlets
+    
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var imageUrlTf: UITextField!
     @IBOutlet weak var largeImageUrlTf: UITextField!
@@ -19,11 +21,15 @@ class AddOrEditCocktailViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var keywordsTf: UITextField!
     @IBOutlet weak var saveBt: UIButton!
     
+    // MARK: - Properties
+    
     var cocktailItem: CocktailItem?
     
     lazy var viewModel: AddOrEditCocktailViewModel = {
             return AddOrEditCocktailViewModel()
     }()
+    
+    // MARK: - Lifecycle methods
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -98,12 +104,14 @@ class AddOrEditCocktailViewController: UIViewController, UITextFieldDelegate {
         largeDescriptionTv.layer.cornerRadius = 5
         
         largeDescriptionTv.delegate = self
+        self.textViewDidEndEditing(largeDescriptionTv)
         
         let inset = largeDescriptionTv.textContainerInset
         largeDescriptionTv.textContainerInset = UIEdgeInsets(top: inset.top + 0.5, left: inset.left, bottom: inset.bottom + 0.5, right: inset.right)
     }
     
     // MARK: - UITextFieldDelegate
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {
         case imageUrlTf:
@@ -123,6 +131,8 @@ class AddOrEditCocktailViewController: UIViewController, UITextFieldDelegate {
     }
 }
 
+// MARK: - UITextViewDelegate
+
 extension AddOrEditCocktailViewController: UITextViewDelegate {
     
     func textViewDidBeginEditing(_ textView: UITextView) {
@@ -137,10 +147,5 @@ extension AddOrEditCocktailViewController: UITextViewDelegate {
             textView.text = "placeholder_description_large".localized
             textView.textColor = UIColor(hex: 0xC4C4C6)
         }
-    }
-    
-    func textViewShouldReturn(_ textView: UITextView) -> Bool {
-        strengthTf.becomeFirstResponder()
-        return false
     }
 }
