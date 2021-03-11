@@ -14,3 +14,6 @@
 "save" = "Save changes";
 "back" = "Back";
 "placeholder_description_large" = "Long description (2 sentences min)";
+"validation_error_title" = "Fields validation error";
+"validation_error_description" = "One or several fields are filled with error. Please, check";
+"ok" = "OK";

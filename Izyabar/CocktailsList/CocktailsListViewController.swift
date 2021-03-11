@@ -9,10 +9,16 @@ import UIKit
 
 class CocktailsListViewController: UIViewController {
     
+    // MARK: IBOutlets
+    
     @IBOutlet weak var shadowView: UIView!
     @IBOutlet weak var cocktailsView: UICollectionView!
     
+    // MARK: Properties
+    
     private let dataSource = CocktailsListDataSource()
+    
+    // MARK: Lifecycle methods
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -30,7 +36,8 @@ class CocktailsListViewController: UIViewController {
         }
     }
     
-    // MARK: - Private methods
+    // MARK: Private methods
+    
     private func setupRightButton() {
         let isEditorModeEnabled = AuthDataManager.isEditorModeEnabled()
         let loginButton = UIButton()
@@ -70,7 +77,8 @@ class CocktailsListViewController: UIViewController {
         self.setupRightButton()
     }
     
-    // MARK: - Navigation
+    // MARK: Navigation
+    
     private func showCocktailDetailsViewController(with cocktail: CocktailItem) {
         performSegue(withIdentifier: "SegueToCocktailVC", sender: cocktail)
     }
@@ -86,6 +94,17 @@ class CocktailsListViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let cocktailVC = segue.destination as? CocktailDetailsViewController, let cocktail = sender as? CocktailItem {
             cocktailVC.cocktail = cocktail
+        } else if let addOrEditCocktailVC = segue.destination as? AddOrEditCocktailViewController {
+            addOrEditCocktailVC.returnCocktailDelegate = self
         }
+    }
+}
+
+extension CocktailsListViewController: AddCocktailDelegate {
+    func onCocktailAdded(_ cocktail: CocktailItem) {
+        let lastIndex = dataSource.addCocktail(cocktail)
+        cocktailsView.reloadData()
+        cocktailsView.scrollToItem(at: IndexPath(item: lastIndex, section: 0), at: .centeredVertically, animated: true)
+
     }
 }

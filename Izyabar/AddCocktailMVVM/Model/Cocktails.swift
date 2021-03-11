@@ -32,6 +32,23 @@ class CocktailItem: Mappable, Encodable {
     required init?(map: Map) {
     }
     
+    required init(id: Int?, // swiftlint:disable:this variable_name
+                  name: String?,
+                  image: String?,
+                  imageLarge: String?,
+                  descriptionShort: String?,
+                  descriptionLarge: String?,
+                  strength: Int?,
+                  keywords: [String]?) {
+        self.name = name
+        self.image = image
+        self.imageLarge = imageLarge
+        self.descriptionShort = descriptionShort
+        self.descriptionLarge = descriptionLarge
+        self.strength = strength
+        self.keywords = keywords
+    }
+    
     func mapping(map: Map) {
         id <- map["id"]
         name <- map["name"]
@@ -41,5 +58,18 @@ class CocktailItem: Mappable, Encodable {
         imageLarge <- map["image_large"]
         strength <- map["strength"]
         keywords <- map["keywords"]
+    }
+    
+    func isValid() -> Bool {
+        guard let nonNullStrength = strength else { return false }
+        var areKeywordsNonEmpty = true
+        keywords?.forEach {
+            if areKeywordsNonEmpty {
+                areKeywordsNonEmpty = !$0.isEmpty
+            }
+        }
+        return name != nil && descriptionShort != nil && descriptionLarge != nil
+            && image != nil && imageLarge != nil
+            && nonNullStrength >= 0 && nonNullStrength <= 100 && areKeywordsNonEmpty
     }
 }

@@ -13,5 +13,6 @@ target 'Izyabar' do
   pod 'AlamofireObjectMapper', '~> 6.2'
   pod 'SkeletonView'
   pod 'Nuke', '~> 9.0'
+  pod 'AlamofireNetworkActivityLogger', '~> 3.0.0'
 
 end

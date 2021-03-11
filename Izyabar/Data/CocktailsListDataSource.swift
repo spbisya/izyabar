@@ -36,6 +36,11 @@ final class CocktailsListDataSource: NSObject {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         onCellClickClosure?(self.items[indexPath.row])
     }
+    
+    func addCocktail(_ cocktailItem: CocktailItem) -> Int {
+        items.append(cocktailItem)
+        return items.count - 1
+    }
 }
 
 extension CocktailsListDataSource: SkeletonCollectionViewDataSource {

@@ -51,6 +51,7 @@ class CocktailCollectionViewCell: UICollectionViewCell {
     }
     
     func configure(with cocktailItem: CocktailItem) {
+        cocktailImageView.image = nil
         if let url = URL(string: cocktailItem.image ?? "") {
             shadowView.isHidden = true
             Nuke.loadImage(with: url, into: cocktailImageView, completion: {_ in

@@ -1,5 +1,7 @@
 PODS:
   - Alamofire (5.0.0-rc.2)
+  - AlamofireNetworkActivityLogger (3.0.0):
+    - Alamofire (~> 5.0.0-rc.2)
   - AlamofireObjectMapper (6.2.0):
     - Alamofire (= 5.0.0-rc.2)
     - ObjectMapper (~> 3.5.1)
@@ -9,6 +11,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 5.0.0-rc.2)
+  - AlamofireNetworkActivityLogger (~> 3.0.0)
   - AlamofireObjectMapper (~> 6.2)
   - Nuke (~> 9.0)
   - SkeletonView
@@ -16,6 +19,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - AlamofireNetworkActivityLogger
     - AlamofireObjectMapper
     - Nuke
     - ObjectMapper
@@ -23,11 +27,12 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: f9450d3c7f6bea2ad62e7a541c3e9b186c7991d6
+  AlamofireNetworkActivityLogger: 94e8a7d454a4a9800cef1d0c1d3699754493684b
   AlamofireObjectMapper: 74d1440c92c42bbcc2b5f4dc81654ac095ec669f
   Nuke: 56a7266398951d9af3a897a71a7b662344915ec5
   ObjectMapper: 97111c97e054a6ee25917662106689f0b4127b37
   SkeletonView: 2b14cb767a7da384d17d5d7e1db0d55a6cf9566a
 
-PODFILE CHECKSUM: 80aeea2174c10943c51f3204f7a859711feb1c02
+PODFILE CHECKSUM: 00f9a9899ce55b7d3dbf1c4301d56c3e445b6714
 
 COCOAPODS: 1.10.1

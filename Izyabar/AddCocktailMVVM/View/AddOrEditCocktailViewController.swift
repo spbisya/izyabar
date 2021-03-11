@@ -24,9 +24,10 @@ class AddOrEditCocktailViewController: UIViewController {
     // MARK: - Properties
     
     var cocktailItem: CocktailItem?
+    weak var returnCocktailDelegate: AddCocktailDelegate?
     
-    lazy var viewModel: AddOrEditCocktailViewModel = {
-            return AddOrEditCocktailViewModel()
+    private lazy var viewModel: AddOrEditCocktailViewModel = {
+        return AddOrEditCocktailViewModel()
     }()
     
     // MARK: - Lifecycle methods
@@ -57,6 +58,30 @@ class AddOrEditCocktailViewController: UIViewController {
             }
         }
         
+        viewModel.fieldsIncorrectClosure = { [weak self] () in
+            DispatchQueue.main.async {
+                self?.showError(nil)
+            }
+        }
+        
+        viewModel.addCocktailClosure = { [weak self] (cocktailItem: CocktailItem) in
+            DispatchQueue.main.async {
+                self?.returnCocktail(cocktailItem)
+            }
+        }
+        
+//        viewModel.editCocktailClosure = { [weak self] (_: CocktailItem?) in
+//            DispatchQueue.main.async {
+//                // TODO: go back to cocktail details screen
+//            }
+//        }
+        
+        viewModel.serverErrorClosure = { [weak self] (error: Error?) in
+            DispatchQueue.main.async {
+                self?.showError(error)
+            }
+        }
+        
         viewModel.cocktailItem = cocktailItem
     }
     
@@ -70,6 +95,10 @@ class AddOrEditCocktailViewController: UIViewController {
             }
         }
         setupKeyboardBehaviour()
+        
+        saveBt.addAction(UIAction(handler: { _ in
+            self.sendCocktail()
+        }), for: .touchUpInside)
     }
     
     private func setupKeyboardBehaviour() {
@@ -104,6 +133,39 @@ class AddOrEditCocktailViewController: UIViewController {
         let inset = largeDescriptionTv.textContainerInset
         largeDescriptionTv.textContainerInset = UIEdgeInsets(top: inset.top + 0.5, left: inset.left, bottom: inset.bottom + 0.5, right: inset.right)
     }
+    
+    private func buildCocktailItem() -> CocktailItem {
+        return CocktailItem(
+            id: cocktailItem?.id,
+            name: cocktailNameTf.text,
+            image: imageUrlTf.text,
+            imageLarge: largeImageUrlTf.text,
+            descriptionShort: shortDescriptionTf.text,
+            descriptionLarge: largeDescriptionTv.text,
+            strength: Int(strengthTf.text ?? "0"),
+            keywords: keywordsTf.text?.components(separatedBy: " ")
+        )
+    }
+    
+    private func showError(_ error: Error?) {
+        // TODO: handle errors correctly
+        let alertVC = UIAlertController(
+            title: "validation_error_title".localized,
+            message: "validation_error_description".localized,
+            preferredStyle: .alert
+        )
+        alertVC.addAction(UIAlertAction(title: "ok".localized, style: .default, handler: nil))
+        present(alertVC, animated: true)
+    }
+    
+    private func sendCocktail() {
+        viewModel.postCocktail(cocktail: buildCocktailItem())
+    }
+    
+    private func returnCocktail(_ cocktail: CocktailItem) {
+        returnCocktailDelegate?.onCocktailAdded(cocktail)
+        self.navigationController?.popViewController(animated: true)
+    }
 }
 
 // MARK: - UITextFieldDelegate
@@ -112,11 +174,11 @@ extension AddOrEditCocktailViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {
+        case cocktailNameTf:
+            imageUrlTf.becomeFirstResponder()
         case imageUrlTf:
             largeImageUrlTf.becomeFirstResponder()
         case largeImageUrlTf:
-            cocktailNameTf.becomeFirstResponder()
-        case cocktailNameTf:
             shortDescriptionTf.becomeFirstResponder()
         case shortDescriptionTf:
             largeDescriptionTv.becomeFirstResponder()
