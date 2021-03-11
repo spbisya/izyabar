@@ -72,7 +72,7 @@ class AddOrEditCocktailViewController: UIViewController {
         setupKeyboardBehaviour()
     }
     
-    private func setupKeyboardBehaviour(){
+    private func setupKeyboardBehaviour() {
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
         notificationCenter.addObserver(
@@ -84,17 +84,8 @@ class AddOrEditCocktailViewController: UIViewController {
     }
     
     @objc private func adjustForKeyboard(notification: Notification) {
-        guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
-
-        let keyboardScreenEndFrame = keyboardValue.cgRectValue
-        let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
-
-        if notification.name == UIResponder.keyboardWillHideNotification {
-            scrollView.contentInset = .zero
-        } else {
-            scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewEndFrame.height - view.safeAreaInsets.bottom, right: 0)
-        }
-
+        guard let insets = KeyboardContentInsetsBuilder.buildInsetsFor(view: view, notification: notification) else { return }
+        scrollView.contentInset = insets
         scrollView.scrollIndicatorInsets = scrollView.contentInset
     }
     
