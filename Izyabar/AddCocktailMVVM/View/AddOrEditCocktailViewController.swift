@@ -21,6 +21,10 @@ class AddOrEditCocktailViewController: UIViewController, UITextFieldDelegate {
     
     var cocktailItem: CocktailItem?
     
+    lazy var viewModel: AddOrEditCocktailViewModel = {
+            return AddOrEditCocktailViewModel()
+    }()
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.removeRightButton()
@@ -28,12 +32,12 @@ class AddOrEditCocktailViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        initViewModel()
         setupUI()
     }
     
     // MARK: - Private methods
     private func setupUI() {
-        self.title = cocktailItem?.name ?? "add_cocktail".localized
         setupSaveButton()
         setupLargeDescriptionTv()
         
@@ -53,6 +57,22 @@ class AddOrEditCocktailViewController: UIViewController, UITextFieldDelegate {
         )
     }
     
+    private func initViewModel() {
+        viewModel.updateTitleClosure = { [weak self] (title: String) in
+            DispatchQueue.main.async {
+                self?.title = title
+            }
+        }
+        
+        viewModel.updateActionTitleClosure = { [weak self] (title: String) in
+            DispatchQueue.main.async {
+                self?.saveBt.setTitle(title, for: .normal)
+            }
+        }
+        
+        viewModel.cocktailItem = cocktailItem
+    }
+    
     @objc private func adjustForKeyboard(notification: Notification) {
         guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
 
@@ -70,8 +90,6 @@ class AddOrEditCocktailViewController: UIViewController, UITextFieldDelegate {
     
     private func setupSaveButton() {
         saveBt.layer.cornerRadius = 5
-        let buttonTitle = cocktailItem == nil ? "add".localized : "save".localized
-        saveBt.setTitle(buttonTitle, for: .normal)
     }
     
     private func setupLargeDescriptionTv() {
