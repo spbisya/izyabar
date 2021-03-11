@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AddOrEditCocktailViewController: UIViewController, UITextFieldDelegate {
+class AddOrEditCocktailViewController: UIViewController {
     
     // MARK: - IBOutlets
     
@@ -43,25 +43,6 @@ class AddOrEditCocktailViewController: UIViewController, UITextFieldDelegate {
     }
     
     // MARK: - Private methods
-    private func setupUI() {
-        setupSaveButton()
-        setupLargeDescriptionTv()
-        
-        largeDescriptionTv.superview?.subviews.forEach { view in
-            if let editText = view as? UITextField {
-                editText.delegate = self
-            }
-        }
-        
-        let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
-        notificationCenter.addObserver(
-            self,
-            selector: #selector(adjustForKeyboard),
-            name: UIResponder.keyboardWillChangeFrameNotification,
-            object: nil
-        )
-    }
     
     private func initViewModel() {
         viewModel.updateTitleClosure = { [weak self] (title: String) in
@@ -77,6 +58,29 @@ class AddOrEditCocktailViewController: UIViewController, UITextFieldDelegate {
         }
         
         viewModel.cocktailItem = cocktailItem
+    }
+    
+    private func setupUI() {
+        setupSaveButton()
+        setupLargeDescriptionTv()
+        
+        largeDescriptionTv.superview?.subviews.forEach { view in
+            if let editText = view as? UITextField {
+                editText.delegate = self
+            }
+        }
+        setupKeyboardBehaviour()
+    }
+    
+    private func setupKeyboardBehaviour(){
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
+        notificationCenter.addObserver(
+            self,
+            selector: #selector(adjustForKeyboard),
+            name: UIResponder.keyboardWillChangeFrameNotification,
+            object: nil
+        )
     }
     
     @objc private func adjustForKeyboard(notification: Notification) {
@@ -109,8 +113,11 @@ class AddOrEditCocktailViewController: UIViewController, UITextFieldDelegate {
         let inset = largeDescriptionTv.textContainerInset
         largeDescriptionTv.textContainerInset = UIEdgeInsets(top: inset.top + 0.5, left: inset.left, bottom: inset.bottom + 0.5, right: inset.right)
     }
-    
-    // MARK: - UITextFieldDelegate
+}
+
+// MARK: - UITextFieldDelegate
+
+extension AddOrEditCocktailViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {
