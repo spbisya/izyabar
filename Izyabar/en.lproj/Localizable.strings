@@ -15,5 +15,11 @@
 "back" = "Back";
 "placeholder_description_large" = "Long description (2 sentences min)";
 "validation_error_title" = "Fields validation error";
-"validation_error_description" = "One or several fields are filled with error. Please, check";
+"validation_error_message" = "One or several fields are filled with error. Please, check";
 "ok" = "OK";
+"error_title" = "Error occured";
+"unknown_error_message" = "Unknown error occured. Try again later.";
+"yes" = "Yes";
+"no" = "No";
+"delete_cocktail_dialog_title" = "Delete cocktail?";
+"delete_cocktail_dialog_message" = "Are you sure you want to delete the cocktail? This action is non-reversible.\nContinue?";

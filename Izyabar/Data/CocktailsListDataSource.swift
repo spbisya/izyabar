@@ -41,6 +41,22 @@ final class CocktailsListDataSource: NSObject {
         items.append(cocktailItem)
         return items.count - 1
     }
+    
+    func updateCocktail(with cocktail: CocktailItem) -> Int {
+        guard let existingCocktailIndex = items.firstIndex(where: {$0.id == cocktail.id}) else {
+            return -1
+        }
+        items[existingCocktailIndex] = cocktail
+        return existingCocktailIndex
+    }
+    
+    func deleteCocktail(for cocktailId: Int) -> Int {
+        guard let indexToDelete = items.firstIndex(where: {$0.id == cocktailId}) else {
+            return -1
+        }
+        items.remove(at: indexToDelete)
+        return indexToDelete
+    }
 }
 
 extension CocktailsListDataSource: SkeletonCollectionViewDataSource {
@@ -63,7 +79,7 @@ extension CocktailsListDataSource: SkeletonCollectionViewDataSource {
         ) as? CocktailCollectionViewCell else {
             fatalError("Cell was of the wrong type")
         }
-                
+        
         cell.configure(with: item)
         
         return cell

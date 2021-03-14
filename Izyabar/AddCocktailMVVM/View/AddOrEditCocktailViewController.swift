@@ -9,7 +9,7 @@ import UIKit
 
 class AddOrEditCocktailViewController: UIViewController {
     
-    // MARK: - IBOutlets
+    // MARK: IBOutlets
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var imageUrlTf: UITextField!
@@ -20,21 +20,25 @@ class AddOrEditCocktailViewController: UIViewController {
     @IBOutlet weak var strengthTf: UITextField!
     @IBOutlet weak var keywordsTf: UITextField!
     @IBOutlet weak var saveBt: UIButton!
+    @IBOutlet weak var deleteBt: UIButton!
     
-    // MARK: - Properties
+    // MARK: Properties
     
     var cocktailItem: CocktailItem?
     weak var returnCocktailDelegate: AddCocktailDelegate?
+    weak var returnChangedCocktailDelegate: EditCocktailDelegate?
     
     private lazy var viewModel: AddOrEditCocktailViewModel = {
         return AddOrEditCocktailViewModel()
     }()
+    private var oldBackground: UIImage?
+    private var oldShadow: UIImage?
     
-    // MARK: - Lifecycle methods
+    // MARK: Lifecycle methods
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.removeRightButton()
+        setupNavigationBar()
     }
     
     override func viewDidLoad() {
@@ -43,7 +47,7 @@ class AddOrEditCocktailViewController: UIViewController {
         setupUI()
     }
     
-    // MARK: - Private methods
+    // MARK: Private methods
     
     private func initViewModel() {
         viewModel.updateTitleClosure = { [weak self] (title: String) in
@@ -58,27 +62,33 @@ class AddOrEditCocktailViewController: UIViewController {
             }
         }
         
-        viewModel.fieldsIncorrectClosure = { [weak self] () in
-            DispatchQueue.main.async {
-                self?.showError(nil)
-            }
-        }
-        
         viewModel.addCocktailClosure = { [weak self] (cocktailItem: CocktailItem) in
             DispatchQueue.main.async {
-                self?.returnCocktail(cocktailItem)
+                self?.returnNewCocktail(cocktailItem)
             }
         }
         
-//        viewModel.editCocktailClosure = { [weak self] (_: CocktailItem?) in
-//            DispatchQueue.main.async {
-//                // TODO: go back to cocktail details screen
-//            }
-//        }
+        viewModel.editCocktailClosure = { [weak self] (cocktailItem: CocktailItem) in
+            DispatchQueue.main.async {
+                self?.returnChangedCocktail(cocktailItem)
+            }
+        }
         
-        viewModel.serverErrorClosure = { [weak self] (error: Error?) in
+        viewModel.errorClosure = { [weak self] (error: CocktailError) in
             DispatchQueue.main.async {
                 self?.showError(error)
+            }
+        }
+        
+        viewModel.setupCocktailClosure = { [weak self] (cocktailItem: CocktailItem) in
+            DispatchQueue.main.async {
+                self?.setupCocktailUI(for: cocktailItem)
+            }
+        }
+        
+        viewModel.deleteCocktailClosure = { [weak self] () in
+            DispatchQueue.main.async {
+                self?.handleDeletedCocktail()
             }
         }
         
@@ -99,6 +109,14 @@ class AddOrEditCocktailViewController: UIViewController {
         saveBt.addAction(UIAction(handler: { _ in
             self.sendCocktail()
         }), for: .touchUpInside)
+    }
+    
+    private func setupNavigationBar() {
+        self.navigationController?.removeRightButton()
+        oldBackground = self.navigationController?.navigationBar.backgroundImage(for: .default)
+        oldShadow = self.navigationController?.navigationBar.shadowImage
+        self.navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+        self.navigationController?.navigationBar.shadowImage = nil
     }
     
     private func setupKeyboardBehaviour() {
@@ -141,17 +159,16 @@ class AddOrEditCocktailViewController: UIViewController {
             image: imageUrlTf.text,
             imageLarge: largeImageUrlTf.text,
             descriptionShort: shortDescriptionTf.text,
-            descriptionLarge: largeDescriptionTv.text,
+            descriptionLarge: largeDescriptionTv.text == "placeholder_description_large".localized ? nil : largeDescriptionTv.text,
             strength: Int(strengthTf.text ?? "0"),
             keywords: keywordsTf.text?.components(separatedBy: " ")
         )
     }
     
-    private func showError(_ error: Error?) {
-        // TODO: handle errors correctly
+    private func showError(_ error: CocktailError) {
         let alertVC = UIAlertController(
-            title: "validation_error_title".localized,
-            message: "validation_error_description".localized,
+            title: error.title(),
+            message: error.message(),
             preferredStyle: .alert
         )
         alertVC.addAction(UIAlertAction(title: "ok".localized, style: .default, handler: nil))
@@ -162,8 +179,59 @@ class AddOrEditCocktailViewController: UIViewController {
         viewModel.postCocktail(cocktail: buildCocktailItem())
     }
     
-    private func returnCocktail(_ cocktail: CocktailItem) {
+    private func returnNewCocktail(_ cocktail: CocktailItem) {
         returnCocktailDelegate?.onCocktailAdded(cocktail)
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    private func returnChangedCocktail(_ cocktail: CocktailItem) {
+        returnChangedCocktailDelegate?.onCocktailChanged(cocktail)
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    private func setupCocktailUI(for cocktail: CocktailItem) {
+        cocktailNameTf.text = cocktail.name
+        imageUrlTf.text = cocktail.image
+        largeImageUrlTf.text = cocktail.imageLarge
+        shortDescriptionTf.text = cocktail.descriptionShort
+        largeDescriptionTv.text = cocktail.descriptionLarge
+        strengthTf.text = String(describing: cocktail.strength ?? 0)
+        keywordsTf.text = cocktail.keywords?.joined(separator: " ")
+        
+        self.textViewDidEndEditing(largeDescriptionTv)
+        
+        deleteBt.isHidden = false
+        deleteBt.layoutIfNeeded()
+        deleteBt.addAction(UIAction(handler: { _ in
+            self.requestToDeleteCocktail()
+        }), for: .touchUpInside)
+    }
+    
+    private func requestToDeleteCocktail() {
+        let alertVC = UIAlertController(
+            title: "delete_cocktail_dialog_title".localized,
+            message: "delete_cocktail_dialog_message".localized,
+            preferredStyle: .alert
+        )
+        alertVC.addAction(UIAlertAction(title: "no".localized, style: .default, handler: nil))
+        alertVC.addAction(UIAlertAction(title: "yes".localized, style: .default, handler: { _ in
+            self.deleteCocktail()
+        }))
+        present(alertVC, animated: true)
+    }
+    
+    private func deleteCocktail() {
+        guard let cocktailId = cocktailItem?.id else {
+            return
+        }
+        viewModel.deleteCocktail(withId: cocktailId)
+    }
+    
+    private func handleDeletedCocktail() {
+        guard let cocktailId = cocktailItem?.id else {
+            return
+        }
+        returnChangedCocktailDelegate?.onCocktailDeleted(forId: cocktailId)
         self.navigationController?.popViewController(animated: true)
     }
 }
@@ -206,6 +274,8 @@ extension AddOrEditCocktailViewController: UITextViewDelegate {
         if textView.text.isEmpty {
             textView.text = "placeholder_description_large".localized
             textView.textColor = UIColor(hex: 0xC4C4C6)
+        } else {
+            textView.textColor = UIColor.black
         }
     }
 }

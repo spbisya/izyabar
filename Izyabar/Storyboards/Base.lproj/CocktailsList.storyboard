@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="u2c-WH-glq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18121" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="u2c-WH-glq">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18092"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18091"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -27,13 +27,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Xw-NO-RqW">
-                                <rect key="frame" x="0.0" y="140" width="375" height="40"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="iyh-Ji-lfr"/>
-                                </constraints>
+                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zuc-kU-PNX">
+                                <rect key="frame" x="0.0" y="0.0" width="1" height="1"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0zb-dK-fC8">
                                 <rect key="frame" x="0.0" y="140" width="375" height="672"/>
@@ -46,6 +43,14 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Xw-NO-RqW">
+                                <rect key="frame" x="0.0" y="140" width="375" height="40"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="iyh-Ji-lfr"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -135,6 +140,14 @@
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                     </button>
+                                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eB2-cP-2Dw" userLabel="Delete">
+                                                        <rect key="frame" x="0.0" y="412" width="335" height="0.0"/>
+                                                        <color key="backgroundColor" red="0.96470588235294119" green="0.36470588235294116" blue="0.37647058823529411" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                        <state key="normal" title="Delete cocktail">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                    </button>
                                                 </subviews>
                                             </stackView>
                                         </subviews>
@@ -171,6 +184,7 @@
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="IBC-Z7-hZs"/>
                     <connections>
                         <outlet property="cocktailNameTf" destination="hpp-fK-ndl" id="55X-qx-n02"/>
+                        <outlet property="deleteBt" destination="eB2-cP-2Dw" id="TsE-h3-7nf"/>
                         <outlet property="imageUrlTf" destination="uDf-eP-6Pl" id="Qnp-8B-Wug"/>
                         <outlet property="keywordsTf" destination="GzX-7R-g4c" id="Ry9-Es-5OH"/>
                         <outlet property="largeDescriptionTv" destination="iD2-vm-l82" id="prE-so-5J0"/>
@@ -183,7 +197,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a3K-5L-PlW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1924.6376811594205" y="-240.40178571428569"/>
+            <point key="canvasLocation" x="2762" y="88"/>
         </scene>
         <!--Cocktail Details View Controller-->
         <scene sceneID="cxE-JC-baW">
@@ -233,7 +247,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Edu-Ze-xD6" userLabel="StackViewStrength">
                                                 <rect key="frame" x="163.33333333333334" y="426" width="48.333333333333343" height="38"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Hr-3W-23u">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="12%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Hr-3W-23u">
                                                         <rect key="frame" x="8" y="0.0" width="32.666666666666664" height="18"/>
                                                         <fontDescription key="fontDescription" name="CeraPro-Medium" family="Cera Pro" pointSize="18"/>
                                                         <nil key="textColor"/>
@@ -247,6 +261,15 @@
                                                     </label>
                                                 </subviews>
                                             </stackView>
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jgn-8v-1UN" userLabel="EditButton">
+                                                <rect key="frame" x="315" y="416" width="50" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="KdX-4g-Qai"/>
+                                                    <constraint firstAttribute="width" constant="50" id="nb7-ch-ibL"/>
+                                                </constraints>
+                                                <inset key="imageEdgeInsets" minX="12" minY="12" maxX="12" maxY="12"/>
+                                                <state key="normal" image="EditIcon"/>
+                                            </button>
                                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.75" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Summary" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K6g-2y-tQL">
                                                 <rect key="frame" x="19.999999999999993" y="489" width="105.33333333333331" height="25.666666666666629"/>
                                                 <fontDescription key="fontDescription" name="AmericanTypewriter-Semibold" family="American Typewriter" pointSize="22"/>
@@ -294,9 +317,11 @@
                                             <constraint firstAttribute="trailing" secondItem="gYH-ei-tYl" secondAttribute="trailing" constant="20" id="cqU-MS-ENc"/>
                                             <constraint firstItem="gYH-ei-tYl" firstAttribute="leading" secondItem="K6g-2y-tQL" secondAttribute="trailing" constant="15" id="glP-2C-q1l"/>
                                             <constraint firstItem="0W5-nJ-niH" firstAttribute="leading" secondItem="gey-Q4-gp6" secondAttribute="leading" constant="20" id="jb0-Dv-8zc"/>
+                                            <constraint firstItem="Jgn-8v-1UN" firstAttribute="top" secondItem="Edu-Ze-xD6" secondAttribute="top" constant="-10" id="lpI-MJ-r7v"/>
                                             <constraint firstAttribute="trailing" secondItem="l3l-hA-IIp" secondAttribute="trailing" constant="20" id="of5-uv-qtc"/>
                                             <constraint firstItem="hmm-go-COU" firstAttribute="top" secondItem="0W5-nJ-niH" secondAttribute="bottom" constant="40" id="shJ-tB-eG7"/>
                                             <constraint firstItem="Edu-Ze-xD6" firstAttribute="top" secondItem="0W5-nJ-niH" secondAttribute="bottom" constant="40" id="uya-H5-RrX"/>
+                                            <constraint firstAttribute="trailing" secondItem="Jgn-8v-1UN" secondAttribute="trailing" constant="10" id="vr6-sJ-e46"/>
                                             <constraint firstItem="Edu-Ze-xD6" firstAttribute="centerX" secondItem="gey-Q4-gp6" secondAttribute="centerX" id="x4d-by-zpA"/>
                                         </constraints>
                                     </view>
@@ -326,8 +351,10 @@
                         <outlet property="cocktailImageView" destination="iXj-WO-4j8" id="eyB-WD-uF5"/>
                         <outlet property="cocktailNameLabel" destination="0W5-nJ-niH" id="0AU-4B-75O"/>
                         <outlet property="descriptionLabel" destination="cIZ-WN-GfG" id="RAQ-hn-ev5"/>
+                        <outlet property="editButton" destination="Jgn-8v-1UN" id="o32-AE-9yo"/>
                         <outlet property="strengthLabel" destination="9Hr-3W-23u" id="F1e-d0-LDe"/>
                         <outlet property="typeOfDrinkLabel" destination="Gsv-5h-lB7" id="wZc-KH-mcc"/>
+                        <segue destination="ERG-Yi-QrF" kind="show" identifier="SegueEditCocktailVC" id="su2-5f-y7O"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qv3-Eh-AQW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -353,7 +380,11 @@
             <point key="canvasLocation" x="18.840579710144929" y="87.723214285714278"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="e5b-Px-eEM"/>
+    </inferredMetricsTieBreakers>
     <resources>
+        <image name="EditIcon" width="401" height="401"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

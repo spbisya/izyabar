@@ -9,5 +9,5 @@ import Foundation
 
 enum Config {
     static let baseURL = "http://82.196.15.171"
-    static let addCocktailURL = baseURL + "/cocktail"
+    static let cocktailURL = baseURL + "/cocktail"
 }

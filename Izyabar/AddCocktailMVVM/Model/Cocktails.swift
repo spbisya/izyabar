@@ -40,6 +40,7 @@ class CocktailItem: Mappable, Encodable {
                   descriptionLarge: String?,
                   strength: Int?,
                   keywords: [String]?) {
+        self.id = id
         self.name = name
         self.image = image
         self.imageLarge = imageLarge
@@ -52,10 +53,10 @@ class CocktailItem: Mappable, Encodable {
     func mapping(map: Map) {
         id <- map["id"]
         name <- map["name"]
-        descriptionShort <- map["description"]
-        descriptionLarge <- map["description_large"]
+        descriptionShort <- map["descriptionShort"]
+        descriptionLarge <- map["descriptionLarge"]
         image <- map["image"]
-        imageLarge <- map["image_large"]
+        imageLarge <- map["imageLarge"]
         strength <- map["strength"]
         keywords <- map["keywords"]
     }
@@ -68,8 +69,8 @@ class CocktailItem: Mappable, Encodable {
                 areKeywordsNonEmpty = !$0.isEmpty
             }
         }
-        return name != nil && descriptionShort != nil && descriptionLarge != nil
-            && image != nil && imageLarge != nil
+        return name?.isEmpty == false && descriptionShort?.isEmpty == false && descriptionLarge?.isEmpty == false
+            && image?.isEmpty == false && imageLarge?.isEmpty == false
             && nonNullStrength >= 0 && nonNullStrength <= 100 && areKeywordsNonEmpty
     }
 }

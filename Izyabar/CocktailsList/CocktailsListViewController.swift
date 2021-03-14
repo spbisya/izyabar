@@ -28,11 +28,20 @@ class CocktailsListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "back".localized, style: .plain, target: nil, action: nil)
-
+        
         UIHelper.setupGradient(for: shadowView)
         
         dataSource.attach(to: cocktailsView) { cocktail in
             self.showCocktailDetailsViewController(with: cocktail)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let cocktailVC = segue.destination as? CocktailDetailsViewController, let cocktail = sender as? CocktailItem {
+            cocktailVC.cocktail = cocktail
+            cocktailVC.returnChangedCocktailDelegate = self
+        } else if let addOrEditCocktailVC = segue.destination as? AddOrEditCocktailViewController {
+            addOrEditCocktailVC.returnCocktailDelegate = self
         }
     }
     
@@ -91,20 +100,28 @@ class CocktailsListViewController: UIViewController {
         showAddCocktailsViewController()
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let cocktailVC = segue.destination as? CocktailDetailsViewController, let cocktail = sender as? CocktailItem {
-            cocktailVC.cocktail = cocktail
-        } else if let addOrEditCocktailVC = segue.destination as? AddOrEditCocktailViewController {
-            addOrEditCocktailVC.returnCocktailDelegate = self
-        }
+    private func reloadDataAndScrollTo(_ index: Int) {
+        cocktailsView.reloadData()
+        cocktailsView.scrollToItem(at: IndexPath(item: index, section: 0), at: .centeredVertically, animated: true)
     }
 }
 
 extension CocktailsListViewController: AddCocktailDelegate {
     func onCocktailAdded(_ cocktail: CocktailItem) {
         let lastIndex = dataSource.addCocktail(cocktail)
-        cocktailsView.reloadData()
-        cocktailsView.scrollToItem(at: IndexPath(item: lastIndex, section: 0), at: .centeredVertically, animated: true)
-
+        reloadDataAndScrollTo(lastIndex)
     }
+}
+
+extension CocktailsListViewController: EditCocktailDelegate {
+    func onCocktailChanged(_ cocktail: CocktailItem) {
+        let indexOfCocktail = dataSource.updateCocktail(with: cocktail)
+        reloadDataAndScrollTo(indexOfCocktail)
+    }
+    
+    func onCocktailDeleted(forId cocktailId: Int) {
+        let deletedCocktailIndex = dataSource.deleteCocktail(for: cocktailId)
+        cocktailsView.deleteItems(at: [IndexPath(item: deletedCocktailIndex, section: 0)])
+    }
+    
 }

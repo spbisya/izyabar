@@ -13,28 +13,33 @@ class AddOrEditCocktailViewModel {
     
     var updateTitleClosure: ((_ title: String) -> Void)?
     var updateActionTitleClosure: ((_ title: String) -> Void)?
-    var fieldsIncorrectClosure: (() -> Void)?
     var buttonActionClosure: ((_ isAddMode: Bool) -> Void)?
     var addCocktailClosure: ((_ cocktail: CocktailItem) -> Void)?
-    var editCocktailClosure: ((_ cocktail: CocktailItem?) -> Void)?
-    var serverErrorClosure: ((_ error: Error?) -> Void)?
+    var editCocktailClosure: ((_ cocktail: CocktailItem) -> Void)?
+    var errorClosure: ((_ error: CocktailError) -> Void)?
+    var setupCocktailClosure: ((_ cocktail: CocktailItem) -> Void)?
+    var deleteCocktailClosure: (() -> Void)?
     
     // MARK: Properties
     
-    let apiService: AddCocktailServiceProtocol
+    let cocktailService: CocktailServiceProtocol
     
     var cocktailItem: CocktailItem? {
         didSet {
             self.updateTitleClosure?(cocktailItem?.name ?? "add_cocktail".localized)
             self.updateActionTitleClosure?(cocktailItem == nil ? "add".localized : "save".localized)
             self.buttonActionClosure?(cocktailItem==nil)
+            guard let nonNullCocktail = cocktailItem else {
+                return
+            }
+            self.setupCocktailClosure?(nonNullCocktail)
         }
     }
     
     // MARK: Constructor
     
-    init(apiService: AddCocktailServiceProtocol = AddCocktailService()) {
-        self.apiService = apiService
+    init(cocktailService: CocktailServiceProtocol = CocktailService()) {
+        self.cocktailService = cocktailService
     }
     
     // MARK: Public methods
@@ -42,23 +47,29 @@ class AddOrEditCocktailViewModel {
     func postCocktail(cocktail: CocktailItem) {
         let isEditMode = cocktail.id != nil
         if cocktail.isValid() {
-            apiService.addCocktail(cocktailItem: cocktail, complete: { [weak self] (success, newCocktail, error) in
-                if success {
-                    if isEditMode {
-                        self?.editCocktailClosure?(newCocktail)
-                    } else {
-                        guard let nonNullCocktail = newCocktail else {
-                            self?.serverErrorClosure?(error)
-                            return
-                        }
-                        self?.addCocktailClosure?(nonNullCocktail)
-                    }
+            cocktailService.addCocktail(cocktailItem: cocktail, complete: { [weak self] (newCocktail, error) in
+                guard let nonNullCocktail = newCocktail else {
+                    self?.errorClosure?(CocktailError.generateError(for: error))
+                    return
+                }
+                if isEditMode {
+                    self?.editCocktailClosure?(nonNullCocktail)
                 } else {
-                    self?.serverErrorClosure?(error)
+                    self?.addCocktailClosure?(nonNullCocktail)
                 }
             })
         } else {
-            fieldsIncorrectClosure?()
+            self.errorClosure?(CocktailError.fieldValidationError)
         }
+    }
+    
+    func deleteCocktail(withId cocktailId: Int) {
+        cocktailService.deleteCocktail(cocktailId: cocktailId, complete: { [weak self] (success, error) in
+            if success {
+                self?.deleteCocktailClosure?()
+            } else {
+                self?.errorClosure?(CocktailError.generateError(for: error))
+            }
+        })
     }
 }
