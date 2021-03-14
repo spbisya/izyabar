@@ -72,6 +72,7 @@ class CocktailDetailsViewController: UIViewController {
         cocktailNameLabel.text = cocktail.name
         typeOfDrinkLabel.text = cocktail.keywords?.contains("short") == true ? "Short" : "Long"
         strengthLabel.text = "\(cocktail.strength ?? 0)"
+        descriptionLabel.text = cocktail.descriptionLarge
     }
     
     private func enableEditorMode() {
