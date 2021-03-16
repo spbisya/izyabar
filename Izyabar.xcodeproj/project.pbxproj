@@ -32,6 +32,7 @@
 		4BC7F05125F622B5003854C4 /* AuthDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC7F05025F622B5003854C4 /* AuthDataManager.swift */; };
 		4BE0D37825FE6F4200086375 /* EditCocktailDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE0D37725FE6F4200086375 /* EditCocktailDelegate.swift */; };
 		4BE0D37A25FE729400086375 /* CocktailError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE0D37925FE729400086375 /* CocktailError.swift */; };
+		4BE0D381260131DA00086375 /* CocktailDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE0D380260131DA00086375 /* CocktailDetailsViewModel.swift */; };
 		63EED13625F947680083C82B /* CocktailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EED13525F947680083C82B /* CocktailService.swift */; };
 		63EED13A25F9539D0083C82B /* AddOrEditCocktailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EED13925F9539D0083C82B /* AddOrEditCocktailViewController.swift */; };
 		63EED13D25FA02130083C82B /* AddOrEditCocktailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EED13C25FA02130083C82B /* AddOrEditCocktailViewModel.swift */; };
@@ -73,6 +74,7 @@
 		4BC7F05025F622B5003854C4 /* AuthDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDataManager.swift; sourceTree = "<group>"; };
 		4BE0D37725FE6F4200086375 /* EditCocktailDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCocktailDelegate.swift; sourceTree = "<group>"; };
 		4BE0D37925FE729400086375 /* CocktailError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailError.swift; sourceTree = "<group>"; };
+		4BE0D380260131DA00086375 /* CocktailDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailDetailsViewModel.swift; sourceTree = "<group>"; };
 		63EED13525F947680083C82B /* CocktailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailService.swift; sourceTree = "<group>"; };
 		63EED13925F9539D0083C82B /* AddOrEditCocktailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrEditCocktailViewController.swift; sourceTree = "<group>"; };
 		63EED13C25FA02130083C82B /* AddOrEditCocktailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrEditCocktailViewModel.swift; sourceTree = "<group>"; };
@@ -127,14 +129,14 @@
 		4B2CA99B25D338F900C8B391 /* Izyabar */ = {
 			isa = PBXGroup;
 			children = (
-				63EED13325F9471C0083C82B /* AddCocktailMVVM */,
+				63EED13325F9471C0083C82B /* AddCocktail */,
+				4B6CA5FD25E1343E00DBA185 /* CocktailDetails */,
 				4B6CA60525E43CA400DBA185 /* Utils */,
 				63EED14425FA86E80083C82B /* Extensions */,
 				4B6CA60025E42A3900DBA185 /* Network */,
 				4B8034D825DC5FAB00FE00AB /* Data */,
 				4B8034D925DC5FC200FE00AB /* Storyboards */,
 				4B8034D725DC5F4300FE00AB /* CocktailsList */,
-				4B6CA5FD25E1343E00DBA185 /* CocktailDetails */,
 				4B2CA99C25D338F900C8B391 /* AppDelegate.swift */,
 				4B2CA99E25D338F900C8B391 /* SceneDelegate.swift */,
 				4B2CA9A525D338FB00C8B391 /* Assets.xcassets */,
@@ -160,7 +162,8 @@
 		4B6CA5FD25E1343E00DBA185 /* CocktailDetails */ = {
 			isa = PBXGroup;
 			children = (
-				4B6CA5FE25E1347900DBA185 /* CocktailDetailsViewController.swift */,
+				4BE0D37E260131B700086375 /* View */,
+				4BE0D37F260131C300086375 /* ViewModel */,
 			);
 			path = CocktailDetails;
 			sourceTree = "<group>";
@@ -222,7 +225,23 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
-		63EED13325F9471C0083C82B /* AddCocktailMVVM */ = {
+		4BE0D37E260131B700086375 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4B6CA5FE25E1347900DBA185 /* CocktailDetailsViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4BE0D37F260131C300086375 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				4BE0D380260131DA00086375 /* CocktailDetailsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		63EED13325F9471C0083C82B /* AddCocktail */ = {
 			isa = PBXGroup;
 			children = (
 				63EED13725F9476E0083C82B /* Service */,
@@ -230,7 +249,7 @@
 				63EED13825F9535F0083C82B /* View */,
 				63EED13B25FA01E90083C82B /* ViewModel */,
 			);
-			path = AddCocktailMVVM;
+			path = AddCocktail;
 			sourceTree = "<group>";
 		};
 		63EED13425F9473E0083C82B /* Model */ = {
@@ -436,6 +455,7 @@
 				4B2CA99F25D338F900C8B391 /* SceneDelegate.swift in Sources */,
 				63EED13625F947680083C82B /* CocktailService.swift in Sources */,
 				63EED13A25F9539D0083C82B /* AddOrEditCocktailViewController.swift in Sources */,
+				4BE0D381260131DA00086375 /* CocktailDetailsViewModel.swift in Sources */,
 				4B6CA5D425DC6D7B00DBA185 /* GridCollectionViewDelegate.swift in Sources */,
 				4BC7F04C25F54F6F003854C4 /* UIColorExtensions.swift in Sources */,
 				4B6CA60225E42A4700DBA185 /* Config.swift in Sources */,

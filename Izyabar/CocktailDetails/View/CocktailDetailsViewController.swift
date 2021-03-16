@@ -21,7 +21,9 @@ class CocktailDetailsViewController: UIViewController {
     
     // MARK: Properties
     
-    var cocktail: CocktailItem!
+    lazy var viewModel: CocktailDetailsViewModel = {
+        return CocktailDetailsViewModel()
+    }()
     weak var returnChangedCocktailDelegate: EditCocktailDelegate?
     
     // MARK: VC methods
@@ -34,29 +36,46 @@ class CocktailDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if #available(iOS 14.0, *) {
-            descriptionLabel.lineBreakStrategy = .init()
-        }
-        
-        let screenSize: CGRect = UIScreen.main.bounds
-        cocktailImageView.heightAnchor.constraint(equalToConstant: CGFloat(screenSize.width / 1.21)).isActive = true
-        
-        setupCocktail()
-        
-        if AuthDataManager.isEditorModeEnabled() {
-            enableEditorMode()
-        }
+        setupUI()
+        initViewModel()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let addOrEditCocktailVC = segue.destination as? AddOrEditCocktailViewController {
-            addOrEditCocktailVC.cocktailItem = cocktail
+            addOrEditCocktailVC.cocktailItem = viewModel.cocktailItem
             addOrEditCocktailVC.returnChangedCocktailDelegate = self
         }
     }
     
     // MARK: Private methods
+    
+    private func setupUI() {
+        if #available(iOS 14.0, *) {
+            descriptionLabel.lineBreakStrategy = .init()
+        }
+    }
+    
+    private func initViewModel() {
+        viewModel.heightValueClosure = { [weak self] (height: CGFloat) in
+            DispatchQueue.main.async {
+                self?.cocktailImageView.heightAnchor.constraint(equalToConstant: height).isActive = true
+            }
+        }
+        
+        viewModel.setupCocktailClosure = { [weak self] (cocktail: CocktailItem?) in
+            DispatchQueue.main.async {
+                self?.setupCocktail(cocktail)
+            }
+        }
+        
+        viewModel.editorModeClosure = { [weak self] () in
+            DispatchQueue.main.async {
+                self?.enableEditorMode()
+            }
+        }
+        
+        viewModel.checkForCocktail()
+    }
     
     private func setupNavigationBar() {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -68,15 +87,16 @@ class CocktailDetailsViewController: UIViewController {
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
     
-    private func setupCocktail() {
-        if let url = URL(string: cocktail.imageLarge ?? "") {
+    private func setupCocktail(_ cocktail: CocktailItem?) {
+        if let url = URL(string: cocktail?.imageLarge ?? "") {
             let options = ImageLoadingOptions(transition: .fadeIn(duration: 0.3))
             Nuke.loadImage(with: url, options: options, into: cocktailImageView)
         }
-        cocktailNameLabel.text = cocktail.name
-        typeOfDrinkLabel.text = cocktail.keywords?.contains("shot") == true ? "shot".localized : "long".localized
-        strengthLabel.text = "\(cocktail.strength ?? 0)"
-        descriptionLabel.text = cocktail.descriptionLarge
+        cocktailNameLabel.text = cocktail?.name
+        let isShot = cocktail?.keywords?.contains("shot") == true
+        typeOfDrinkLabel.text = isShot ? "shot".localized : "long".localized
+        strengthLabel.text = "\(cocktail?.strength ?? 0)"
+        descriptionLabel.text = cocktail?.descriptionLarge
     }
     
     private func enableEditorMode() {
@@ -88,7 +108,7 @@ class CocktailDetailsViewController: UIViewController {
     }
     
     private func editCocktail() {
-        performSegue(withIdentifier: "SegueEditCocktailVC", sender: cocktail)
+        performSegue(withIdentifier: "SegueEditCocktailVC", sender: viewModel.cocktailItem)
     }
 }
 
@@ -96,8 +116,8 @@ class CocktailDetailsViewController: UIViewController {
 
 extension CocktailDetailsViewController: EditCocktailDelegate {
     func onCocktailChanged(_ cocktail: CocktailItem) {
-        self.cocktail = cocktail
-        setupCocktail()
+        viewModel.cocktailItem = cocktail
+        viewModel.setupCocktail()
         returnChangedCocktailDelegate?.onCocktailChanged(cocktail)
     }
     

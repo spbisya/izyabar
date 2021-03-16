@@ -38,7 +38,7 @@ class CocktailsListViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let cocktailVC = segue.destination as? CocktailDetailsViewController, let cocktail = sender as? CocktailItem {
-            cocktailVC.cocktail = cocktail
+            cocktailVC.viewModel.cocktailItem = cocktail
             cocktailVC.returnChangedCocktailDelegate = self
         } else if let addOrEditCocktailVC = segue.destination as? AddOrEditCocktailViewController {
             addOrEditCocktailVC.returnCocktailDelegate = self
