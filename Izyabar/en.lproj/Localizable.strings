@@ -25,3 +25,4 @@
 "delete_cocktail_dialog_message" = "Are you sure you want to delete the cocktail? This action is non-reversible.\nContinue?";
 "shot" = "Shot";
 "long" = "Long";
+"retry" = "Retry";

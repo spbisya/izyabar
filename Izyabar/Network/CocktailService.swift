@@ -10,12 +10,25 @@ import Alamofire
 import AlamofireObjectMapper
 
 protocol CocktailServiceProtocol: AnyObject {
+    func loadCocktails(complete: @escaping ( _ cocktails: [CocktailItem]?, _ error: Error? ) -> Void)
+    
     func addCocktail(cocktailItem: CocktailItem, complete: @escaping ( _ cocktail: CocktailItem?, _ error: Error? ) -> Void)
     
     func deleteCocktail(cocktailId: Int, complete: @escaping ( _ success: Bool, _ error: Error? ) -> Void)
 }
 
 class CocktailService: CocktailServiceProtocol {
+    func loadCocktails(complete: @escaping ([CocktailItem]?, Error?) -> Void) {
+        AF.request(Config.cocktailsURL).responseObject { (response: AFDataResponse<Cocktails>) in
+            switch response.result {
+            case .success(let cocktails):
+                complete(cocktails.coctails, nil)
+            case .failure(let error):
+                complete(nil, error)
+            }
+        }
+    }
+    
     func addCocktail(cocktailItem: CocktailItem, complete: @escaping (CocktailItem?, Error?) -> Void) {
         AF.request(
             Config.cocktailURL,

@@ -73,9 +73,9 @@ class AddOrEditCocktailViewController: UIViewController {
             }
         }
         
-        viewModel.errorClosure = { [weak self] (error: CocktailError) in
+        viewModel.errorClosure = { (error: CocktailError) in
             DispatchQueue.main.async {
-                self?.showError(error)
+                self.showErrorDialogFor(error)
             }
         }
         
@@ -162,16 +162,6 @@ class AddOrEditCocktailViewController: UIViewController {
             strength: Int(strengthTf.text ?? "0"),
             keywords: keywordsTf.text?.components(separatedBy: " ")
         )
-    }
-    
-    private func showError(_ error: CocktailError) {
-        let alertVC = UIAlertController(
-            title: error.title(),
-            message: error.message(),
-            preferredStyle: .alert
-        )
-        alertVC.addAction(UIAlertAction(title: "ok".localized, style: .default, handler: nil))
-        present(alertVC, animated: true)
     }
     
     private func sendCocktail() {

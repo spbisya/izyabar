@@ -22,7 +22,7 @@ class AddOrEditCocktailViewModel {
     
     // MARK: Properties
     
-    let cocktailService: CocktailServiceProtocol
+    private let cocktailService: CocktailServiceProtocol
     
     var cocktailItem: CocktailItem? {
         didSet {

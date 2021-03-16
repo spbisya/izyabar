@@ -21,16 +21,10 @@ final class CocktailsListDataSource: NSObject {
         
         self.onCellClickClosure = onCellClickClosure
         view.delegate = self
-        
-        view.isSkeletonable = true
-        view.showAnimatedSkeleton()
-        IzyabarService.loadCocktails { result in
-            self.items = result
-            view.reloadData()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                view.hideSkeleton(transition: .crossDissolve(0.25))
-            }
-        }
+    }
+    
+    func handleCocktails(_ cocktails: [CocktailItem]) {
+        self.items = cocktails
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

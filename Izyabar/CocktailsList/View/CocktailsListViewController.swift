@@ -17,8 +17,11 @@ class CocktailsListViewController: UIViewController {
     // MARK: Properties
     
     private let dataSource = CocktailsListDataSource()
+    private lazy var viewModel: CocktailsListViewModel = {
+        return CocktailsListViewModel()
+    }()
     
-    // MARK: Lifecycle methods
+    // MARK: UIViewController methods
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -27,13 +30,8 @@ class CocktailsListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "back".localized, style: .plain, target: nil, action: nil)
-        
-        UIHelper.setupGradient(for: shadowView)
-        
-        dataSource.attach(to: cocktailsView) { cocktail in
-            self.showCocktailDetailsViewController(with: cocktail)
-        }
+        setupUI()
+        initViewModel()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -47,6 +45,59 @@ class CocktailsListViewController: UIViewController {
     
     // MARK: Private methods
     
+    private func setupUI() {
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "back".localized, style: .plain, target: nil, action: nil)
+        
+        UIHelper.setupGradient(for: shadowView)
+        
+        dataSource.attach(to: cocktailsView) { cocktail in
+            self.showCocktailDetailsViewController(with: cocktail)
+        }
+    }
+    
+    private func initViewModel() {
+        viewModel.onLoadingStatusChangedClosure = { [weak self] (isLoading: Bool) in
+            DispatchQueue.main.async {
+                self?.changeLoadingStatus(isLoading)
+            }
+        }
+        
+        viewModel.loadCocktailsClosure = { [weak self] (cocktails: [CocktailItem]) in
+            DispatchQueue.main.async {
+                self?.setupCocktails(cocktails)
+            }
+        }
+        
+        viewModel.errorClosure = { (error: CocktailError) in
+            DispatchQueue.main.async {
+                self.showErrorDialogFor(error) {
+                    self.viewModel.loadCocktails()
+                }
+            }
+        }
+        
+        viewModel.successfulLoginClosure = { [weak self] () in
+            DispatchQueue.main.async {
+                self?.enableEditorMode()
+            }
+        }
+        
+        viewModel.loadCocktails()
+    }
+    
+    private func changeLoadingStatus(_ isLoading: Bool) {
+        if isLoading {
+            cocktailsView.showAnimatedSkeleton()
+        } else {
+            cocktailsView.hideSkeleton(transition: .crossDissolve(0.25))
+        }
+    }
+    
+    private func setupCocktails(_ cocktails: [CocktailItem]) {
+        dataSource.handleCocktails(cocktails)
+        cocktailsView.reloadData()
+    }
+    
     private func setupRightButton() {
         let isEditorModeEnabled = AuthDataManager.isEditorModeEnabled()
         let loginButton = UIButton()
@@ -57,13 +108,13 @@ class CocktailsListViewController: UIViewController {
         
         navigationController?.navigationBar.addSubview(loginButton)
         
-        let action = isEditorModeEnabled ? #selector(showAddCocktailViewController) : #selector(login)
+        let action = isEditorModeEnabled ? #selector(showAddCocktailViewController) : #selector(showLoginAlert)
         loginButton.addTarget(self, action: action, for: .touchUpInside)
         
         UIHelper.applyImageInsetsAndConstraints(for: loginButton, rootView: navigationController?.navigationBar)
     }
     
-    @objc private func login() {
+    @objc private func showLoginAlert() {
         let alertVC = UIAlertController(title: "enter_code_title".localized, message: "enter_code_description".localized, preferredStyle: .alert)
         alertVC.addTextField()
         
@@ -71,7 +122,7 @@ class CocktailsListViewController: UIViewController {
             guard let textFields = alertVC.textFields else { return }
             let answerField = textFields[0]
             if answerField.text == Constants.editorPasscode {
-                self.enableEditorMode()
+                self.viewModel.loginAsEditor()
             }
         }
         
@@ -81,7 +132,6 @@ class CocktailsListViewController: UIViewController {
     }
     
     private func enableEditorMode() {
-        AuthDataManager.enableEditorMode()
         self.navigationController?.removeRightButton()
         self.setupRightButton()
     }
@@ -106,12 +156,16 @@ class CocktailsListViewController: UIViewController {
     }
 }
 
+// MARK: - AddCocktailDelegate
+
 extension CocktailsListViewController: AddCocktailDelegate {
     func onCocktailAdded(_ cocktail: CocktailItem) {
         let lastIndex = dataSource.addCocktail(cocktail)
         reloadDataAndScrollTo(lastIndex)
     }
 }
+
+// MARK: - EditCocktailDelegate
 
 extension CocktailsListViewController: EditCocktailDelegate {
     func onCocktailChanged(_ cocktail: CocktailItem) {
