@@ -23,3 +23,5 @@
 "no" = "Нет";
 "delete_cocktail_dialog_title" = "Удалить коктейль?";
 "delete_cocktail_dialog_message" = "Вы точно хотите удалить коктейль? Это действие необратимо.\nПродолжить?";
+"shot" = "Шот";
+"long" = "Лонг";

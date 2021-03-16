@@ -70,7 +70,7 @@ class CocktailDetailsViewController: UIViewController {
             Nuke.loadImage(with: url, into: cocktailImageView)
         }
         cocktailNameLabel.text = cocktail.name
-        typeOfDrinkLabel.text = cocktail.keywords?.contains("short") == true ? "Short" : "Long"
+        typeOfDrinkLabel.text = cocktail.keywords?.contains("shot") == true ? "shot".localized : "long".localized
         strengthLabel.text = "\(cocktail.strength ?? 0)"
         descriptionLabel.text = cocktail.descriptionLarge
     }
