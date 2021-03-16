@@ -66,7 +66,7 @@ class CocktailDetailsViewController: UIViewController {
     }
     
     private func setupCocktail() {
-        if let url = URL(string: cocktail.image ?? "") {
+        if let url = URL(string: cocktail.imageLarge ?? "") {
             Nuke.loadImage(with: url, into: cocktailImageView)
         }
         cocktailNameLabel.text = cocktail.name
