@@ -59,18 +59,18 @@ final class CocktailsListDataSource: NSObject {
     }
 }
 
+// MARK: - SkeletonCollectionViewDataSource
+
 extension CocktailsListDataSource: SkeletonCollectionViewDataSource {
     
     func collectionSkeletonView(_ skeletonView: UICollectionView, cellIdentifierForItemAt indexPath: IndexPath) -> ReusableCellIdentifier {
         return CocktailCollectionViewCell.identifier
     }
     
-    // Return elements count that must be displayed in table
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return items.count
     }
     
-    // Instantiate or reused (depend on position and cell type in table view), configure cell element and return it for displaying on table
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let item = items[indexPath.row]
         guard let cell = collectionView.dequeueReusableCell(
@@ -85,4 +85,44 @@ extension CocktailsListDataSource: SkeletonCollectionViewDataSource {
         return cell
     }
     
+}
+
+// MARK: - UICollectionViewDelegateFlowLayout
+
+extension CocktailsListDataSource: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let paddingSpace = GridCollectionViewConstants.sectionInsets.left + GridCollectionViewConstants.sectionInsets.right
+            + GridCollectionViewConstants.minimumItemSpacing * (GridCollectionViewConstants.itemsPerRow - 1)
+        let availableWidth = collectionView.bounds.width - paddingSpace
+        let widthPerItem = availableWidth / GridCollectionViewConstants.itemsPerRow
+        return CGSize(width: widthPerItem, height: 200)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
+        return GridCollectionViewConstants.sectionInsets
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return GridCollectionViewConstants.minimumItemSpacing
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return GridCollectionViewConstants.minimumLineSpacing
+    }
+}
+
+// MARK: - GridCollectionViewConstants
+
+private enum GridCollectionViewConstants {
+    static let sectionInsets = UIEdgeInsets(top: 25.0, left: 8.0, bottom: 0.0, right: 8.0)
+    static let itemsPerRow: CGFloat = 2
+    static let minimumItemSpacing: CGFloat = 6
+    static let minimumLineSpacing: CGFloat = 15
 }
