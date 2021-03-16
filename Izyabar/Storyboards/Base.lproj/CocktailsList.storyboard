@@ -90,10 +90,10 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="768"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NZY-vK-lER">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="452"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="398"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="N0u-1l-Na5">
-                                                <rect key="frame" x="20" y="20" width="335" height="412"/>
+                                                <rect key="frame" x="20" y="20" width="335" height="358"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Cocktail title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hpp-fK-ndl" userLabel="Name">
                                                         <rect key="frame" x="0.0" y="0.0" width="335" height="34"/>
@@ -105,35 +105,30 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                                     </textField>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Large image url" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TR6-JT-Q0g" userLabel="ImageLarge">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Short description (1-4 words)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Dm-xz-A6o" userLabel="DescriptionShort">
                                                         <rect key="frame" x="0.0" y="108" width="335" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                                     </textField>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Short description (1-4 words)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Dm-xz-A6o" userLabel="DescriptionShort">
-                                                        <rect key="frame" x="0.0" y="162" width="335" height="34"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
-                                                    </textField>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="iD2-vm-l82">
-                                                        <rect key="frame" x="0.0" y="216" width="335" height="33"/>
+                                                        <rect key="frame" x="0.0" y="162" width="335" height="33"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <color key="textColor" systemColor="labelColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="next"/>
                                                     </textView>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Cocktail strength, e.x. - 40%" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EVQ-gU-U7m" userLabel="Strength">
-                                                        <rect key="frame" x="0.0" y="269" width="335" height="34"/>
+                                                        <rect key="frame" x="0.0" y="215" width="335" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="next"/>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Keywords, e.x. - vodka, sweet, sour" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GzX-7R-g4c" userLabel="Keywords">
-                                                        <rect key="frame" x="0.0" y="323" width="335" height="34"/>
+                                                        <rect key="frame" x="0.0" y="269" width="335" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                                     </textField>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aPN-Ha-coI" userLabel="Save">
-                                                        <rect key="frame" x="0.0" y="377" width="335" height="35"/>
+                                                        <rect key="frame" x="0.0" y="323" width="335" height="35"/>
                                                         <color key="backgroundColor" red="0.28627450980392155" green="0.56470588235294117" blue="0.88235294117647056" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                         <state key="normal" title="Save">
@@ -141,7 +136,7 @@
                                                         </state>
                                                     </button>
                                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eB2-cP-2Dw" userLabel="Delete">
-                                                        <rect key="frame" x="0.0" y="412" width="335" height="0.0"/>
+                                                        <rect key="frame" x="0.0" y="358" width="335" height="0.0"/>
                                                         <color key="backgroundColor" red="0.96470588235294119" green="0.36470588235294116" blue="0.37647058823529411" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                         <state key="normal" title="Delete cocktail">
@@ -188,7 +183,6 @@
                         <outlet property="imageUrlTf" destination="uDf-eP-6Pl" id="Qnp-8B-Wug"/>
                         <outlet property="keywordsTf" destination="GzX-7R-g4c" id="Ry9-Es-5OH"/>
                         <outlet property="largeDescriptionTv" destination="iD2-vm-l82" id="prE-so-5J0"/>
-                        <outlet property="largeImageUrlTf" destination="TR6-JT-Q0g" id="mfh-to-oIP"/>
                         <outlet property="saveBt" destination="aPN-Ha-coI" id="KwA-MM-trh"/>
                         <outlet property="scrollView" destination="Qsm-uj-S0H" id="fkB-JB-hbA"/>
                         <outlet property="shortDescriptionTf" destination="4Dm-xz-A6o" id="yl2-VK-SOs"/>
@@ -211,24 +205,24 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gey-Q4-gp6">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1025.3333333333333"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1105.3333333333333"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iXj-WO-4j8" userLabel="CocktailImage">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="320"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
                                                 <color key="backgroundColor" systemColor="systemBlueColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="320" id="INl-JW-9y2"/>
+                                                    <constraint firstAttribute="height" constant="400" placeholder="YES" id="INl-JW-9y2"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="Absinthe Mojito" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0W5-nJ-niH" userLabel="CocktailNameLabel">
-                                                <rect key="frame" x="20" y="350" width="335" height="36"/>
+                                                <rect key="frame" x="20" y="430" width="335" height="36"/>
                                                 <edgeInsets key="layoutMargins" top="8" left="21" bottom="8" right="8"/>
                                                 <fontDescription key="fontDescription" name="CeraPro-Bold" family="Cera Pro" pointSize="36"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="hmm-go-COU" userLabel="StackViewDrinkType">
-                                                <rect key="frame" x="20" y="426" width="72.666666666666671" height="38"/>
+                                                <rect key="frame" x="20" y="506" width="72.666666666666671" height="38"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LONG" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gsv-5h-lB7">
                                                         <rect key="frame" x="11.666666666666668" y="0.0" width="49.333333333333329" height="18"/>
@@ -245,7 +239,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Edu-Ze-xD6" userLabel="StackViewStrength">
-                                                <rect key="frame" x="163.33333333333334" y="426" width="48.333333333333343" height="38"/>
+                                                <rect key="frame" x="163.33333333333334" y="506" width="48.333333333333343" height="38"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="12%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Hr-3W-23u">
                                                         <rect key="frame" x="8" y="0.0" width="32.666666666666664" height="18"/>
@@ -262,7 +256,7 @@
                                                 </subviews>
                                             </stackView>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jgn-8v-1UN" userLabel="EditButton">
-                                                <rect key="frame" x="315" y="416" width="50" height="50"/>
+                                                <rect key="frame" x="315" y="496" width="50" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="KdX-4g-Qai"/>
                                                     <constraint firstAttribute="width" constant="50" id="nb7-ch-ibL"/>
@@ -271,26 +265,26 @@
                                                 <state key="normal" image="EditIcon"/>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.75" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Summary" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K6g-2y-tQL">
-                                                <rect key="frame" x="19.999999999999993" y="489" width="105.33333333333331" height="25.666666666666629"/>
+                                                <rect key="frame" x="19.999999999999993" y="569" width="105.33333333333331" height="25.666666666666629"/>
                                                 <fontDescription key="fontDescription" name="AmericanTypewriter-Semibold" family="American Typewriter" pointSize="22"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gYH-ei-tYl" userLabel="LineView">
-                                                <rect key="frame" x="140.33333333333337" y="502" width="214.66666666666663" height="1.6666666666666856"/>
+                                                <rect key="frame" x="140.33333333333337" y="582" width="214.66666666666663" height="1.6666666666666288"/>
                                                 <color key="backgroundColor" red="0.75294117647058822" green="0.75686274509803919" blue="0.76470588235294112" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1.5" id="3Sy-Ys-RT6"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cIZ-WN-GfG" userLabel="SummaryDescription">
-                                                <rect key="frame" x="20" y="524.66666666666663" width="335" height="450"/>
+                                                <rect key="frame" x="20" y="604.66666666666663" width="335" height="449.99999999999989"/>
                                                 <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
                                                 <fontDescription key="fontDescription" name="CeraRoundPro-Regular" family="Cera Round Pro" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l3l-hA-IIp" userLabel="FinalLineView">
-                                                <rect key="frame" x="20" y="989.66666666666663" width="335" height="1.6666666666666288"/>
+                                                <rect key="frame" x="20" y="1069.6666666666667" width="335" height="1.6666666666667425"/>
                                                 <color key="backgroundColor" red="0.75294117650000003" green="0.75686274509999996" blue="0.76470588240000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1.5" id="MIs-40-O7k"/>

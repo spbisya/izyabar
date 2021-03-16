@@ -39,6 +39,9 @@ class CocktailDetailsViewController: UIViewController {
             descriptionLabel.lineBreakStrategy = .init()
         }
         
+        let screenSize: CGRect = UIScreen.main.bounds
+        cocktailImageView.heightAnchor.constraint(equalToConstant: CGFloat(screenSize.width / 1.21)).isActive = true
+        
         setupCocktail()
         
         if AuthDataManager.isEditorModeEnabled() {

@@ -13,7 +13,6 @@ class AddOrEditCocktailViewController: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var imageUrlTf: UITextField!
-    @IBOutlet weak var largeImageUrlTf: UITextField!
     @IBOutlet weak var cocktailNameTf: UITextField!
     @IBOutlet weak var shortDescriptionTf: UITextField!
     @IBOutlet weak var largeDescriptionTv: UITextView!
@@ -157,7 +156,7 @@ class AddOrEditCocktailViewController: UIViewController {
             id: cocktailItem?.id,
             name: cocktailNameTf.text,
             image: imageUrlTf.text,
-            imageLarge: largeImageUrlTf.text,
+            imageLarge: imageUrlTf.text?.replacingOccurrences(of: ".png", with: "_large.png"),
             descriptionShort: shortDescriptionTf.text,
             descriptionLarge: largeDescriptionTv.text == "placeholder_description_large".localized ? nil : largeDescriptionTv.text,
             strength: Int(strengthTf.text ?? "0"),
@@ -192,7 +191,6 @@ class AddOrEditCocktailViewController: UIViewController {
     private func setupCocktailUI(for cocktail: CocktailItem) {
         cocktailNameTf.text = cocktail.name
         imageUrlTf.text = cocktail.image
-        largeImageUrlTf.text = cocktail.imageLarge
         shortDescriptionTf.text = cocktail.descriptionShort
         largeDescriptionTv.text = cocktail.descriptionLarge
         strengthTf.text = String(describing: cocktail.strength ?? 0)
@@ -245,8 +243,6 @@ extension AddOrEditCocktailViewController: UITextFieldDelegate {
         case cocktailNameTf:
             imageUrlTf.becomeFirstResponder()
         case imageUrlTf:
-            largeImageUrlTf.becomeFirstResponder()
-        case largeImageUrlTf:
             shortDescriptionTf.becomeFirstResponder()
         case shortDescriptionTf:
             largeDescriptionTv.becomeFirstResponder()
