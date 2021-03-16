@@ -70,7 +70,8 @@ class CocktailDetailsViewController: UIViewController {
     
     private func setupCocktail() {
         if let url = URL(string: cocktail.imageLarge ?? "") {
-            Nuke.loadImage(with: url, into: cocktailImageView)
+            let options = ImageLoadingOptions(transition: .fadeIn(duration: 0.3))
+            Nuke.loadImage(with: url, options: options, into: cocktailImageView)
         }
         cocktailNameLabel.text = cocktail.name
         typeOfDrinkLabel.text = cocktail.keywords?.contains("shot") == true ? "shot".localized : "long".localized
