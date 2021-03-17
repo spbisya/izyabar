@@ -33,6 +33,8 @@
 		4BE0D381260131DA00086375 /* CocktailDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE0D380260131DA00086375 /* CocktailDetailsViewModel.swift */; };
 		4BE0D38526013C3300086375 /* CocktailsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE0D38426013C3300086375 /* CocktailsListViewModel.swift */; };
 		4BE0D3882601462500086375 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE0D3872601462500086375 /* UIViewControllerExtensions.swift */; };
+		4BE0D38A260284F300086375 /* StopListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE0D389260284F200086375 /* StopListService.swift */; };
+		4BE0D38C26028B2900086375 /* StopList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE0D38B26028B2900086375 /* StopList.swift */; };
 		63EED13625F947680083C82B /* CocktailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EED13525F947680083C82B /* CocktailService.swift */; };
 		63EED13A25F9539D0083C82B /* AddOrEditCocktailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EED13925F9539D0083C82B /* AddOrEditCocktailViewController.swift */; };
 		63EED13D25FA02130083C82B /* AddOrEditCocktailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EED13C25FA02130083C82B /* AddOrEditCocktailViewModel.swift */; };
@@ -75,6 +77,8 @@
 		4BE0D380260131DA00086375 /* CocktailDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailDetailsViewModel.swift; sourceTree = "<group>"; };
 		4BE0D38426013C3300086375 /* CocktailsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailsListViewModel.swift; sourceTree = "<group>"; };
 		4BE0D3872601462500086375 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
+		4BE0D389260284F200086375 /* StopListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopListService.swift; sourceTree = "<group>"; };
+		4BE0D38B26028B2900086375 /* StopList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopList.swift; sourceTree = "<group>"; };
 		63EED13525F947680083C82B /* CocktailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailService.swift; sourceTree = "<group>"; };
 		63EED13925F9539D0083C82B /* AddOrEditCocktailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrEditCocktailViewController.swift; sourceTree = "<group>"; };
 		63EED13C25FA02130083C82B /* AddOrEditCocktailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrEditCocktailViewModel.swift; sourceTree = "<group>"; };
@@ -134,6 +138,7 @@
 				63EED13325F9471C0083C82B /* AddCocktail */,
 				4B6CA60525E43CA400DBA185 /* Utils */,
 				63EED14425FA86E80083C82B /* Extensions */,
+				63EED13425F9473E0083C82B /* Model */,
 				4B6CA60025E42A3900DBA185 /* Network */,
 				4B8034D825DC5FAB00FE00AB /* Data */,
 				4B8034D925DC5FC200FE00AB /* Storyboards */,
@@ -173,6 +178,7 @@
 			children = (
 				63EED13525F947680083C82B /* CocktailService.swift */,
 				4B6CA60125E42A4600DBA185 /* Config.swift */,
+				4BE0D389260284F200086375 /* StopListService.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -260,7 +266,6 @@
 		63EED13325F9471C0083C82B /* AddCocktail */ = {
 			isa = PBXGroup;
 			children = (
-				63EED13425F9473E0083C82B /* Model */,
 				63EED13825F9535F0083C82B /* View */,
 				63EED13B25FA01E90083C82B /* ViewModel */,
 			);
@@ -272,6 +277,7 @@
 			children = (
 				4B1C29DC25E959D600CB892A /* Cocktails.swift */,
 				4BE0D37925FE729400086375 /* CocktailError.swift */,
+				4BE0D38B26028B2900086375 /* StopList.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -451,6 +457,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B2CA9A125D338F900C8B391 /* CocktailsListViewController.swift in Sources */,
+				4BE0D38C26028B2900086375 /* StopList.swift in Sources */,
 				4B2CA99D25D338F900C8B391 /* AppDelegate.swift in Sources */,
 				4BE0D37A25FE729400086375 /* CocktailError.swift in Sources */,
 				4BE0D37825FE6F4200086375 /* EditCocktailDelegate.swift in Sources */,
@@ -470,6 +477,7 @@
 				4B6CA60225E42A4700DBA185 /* Config.swift in Sources */,
 				63EED14125FA83EC0083C82B /* UINavigationControllerExtensions.swift in Sources */,
 				4BC7F04E25F551D1003854C4 /* Constants.swift in Sources */,
+				4BE0D38A260284F300086375 /* StopListService.swift in Sources */,
 				63EED13F25FA83C40083C82B /* StringExtensions.swift in Sources */,
 				4B6CA5FF25E1347900DBA185 /* CocktailDetailsViewController.swift in Sources */,
 				63EED14825FAA02D0083C82B /* AddCocktailDelegate.swift in Sources */,
