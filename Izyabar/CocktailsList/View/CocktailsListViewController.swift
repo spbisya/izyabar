@@ -82,7 +82,14 @@ class CocktailsListViewController: UIViewController {
             }
         }
         
+        viewModel.loadStopListClosure = { [weak self] (stopList: [Int]) in
+            DispatchQueue.main.async {
+                self?.updateStopList(with: stopList)
+            }
+        }
+        
         viewModel.loadCocktails()
+        viewModel.loadStopList()
     }
     
     private func changeLoadingStatus(_ isLoading: Bool) {
@@ -95,6 +102,11 @@ class CocktailsListViewController: UIViewController {
     
     private func setupCocktails(_ cocktails: [CocktailItem]) {
         dataSource.handleCocktails(cocktails)
+        cocktailsView.reloadData()
+    }
+    
+    private func updateStopList(with ids: [Int]) {
+        dataSource.updateStopList(with: ids)
         cocktailsView.reloadData()
     }
     

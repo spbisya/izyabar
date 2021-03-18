@@ -12,6 +12,7 @@ import SkeletonView
 final class CocktailsListDataSource: NSObject {
     
     private var items: [CocktailItem] = []
+    private var stopListIds: [Int] = []
     private var onCellClickClosure: ( (CocktailItem) -> Void)?
     
     func attach(to view: UICollectionView, onCellClickClosure: @escaping (CocktailItem) -> Void) {
@@ -25,6 +26,7 @@ final class CocktailsListDataSource: NSObject {
     
     func handleCocktails(_ cocktails: [CocktailItem]) {
         self.items = cocktails
+        reloadCocktailsWithStopList()
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -51,6 +53,21 @@ final class CocktailsListDataSource: NSObject {
         items.remove(at: indexToDelete)
         return indexToDelete
     }
+    
+    func updateStopList(with ids: [Int]) {
+        stopListIds = ids
+        reloadCocktailsWithStopList()
+    }
+    
+    func reloadCocktailsWithStopList() {
+        let disabledCocktails = items.filter { cocktail in
+            return stopListIds.contains(cocktail.id ?? 0)
+        }
+        items.removeAll { cocktail in
+            return stopListIds.contains(cocktail.id ?? 0)
+        }
+        items.append(contentsOf: disabledCocktails)
+    }
 }
 
 // MARK: - SkeletonCollectionViewDataSource
@@ -67,6 +84,7 @@ extension CocktailsListDataSource: SkeletonCollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let item = items[indexPath.row]
+        let isInStopList = stopListIds.contains(item.id ?? 0)
         guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: CocktailCollectionViewCell.identifier,
             for: indexPath
@@ -74,7 +92,7 @@ extension CocktailsListDataSource: SkeletonCollectionViewDataSource {
             fatalError("Cell was of the wrong type")
         }
         
-        cell.configure(with: item)
+        cell.configure(with: item, isInStopList)
         
         return cell
     }

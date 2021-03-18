@@ -35,6 +35,7 @@
 		4BE0D3882601462500086375 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE0D3872601462500086375 /* UIViewControllerExtensions.swift */; };
 		4BE0D38A260284F300086375 /* StopListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE0D389260284F200086375 /* StopListService.swift */; };
 		4BE0D38C26028B2900086375 /* StopList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE0D38B26028B2900086375 /* StopList.swift */; };
+		4BE0D38E2603D98A00086375 /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE0D38D2603D98A00086375 /* UIImageExtensions.swift */; };
 		63EED13625F947680083C82B /* CocktailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EED13525F947680083C82B /* CocktailService.swift */; };
 		63EED13A25F9539D0083C82B /* AddOrEditCocktailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EED13925F9539D0083C82B /* AddOrEditCocktailViewController.swift */; };
 		63EED13D25FA02130083C82B /* AddOrEditCocktailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EED13C25FA02130083C82B /* AddOrEditCocktailViewModel.swift */; };
@@ -79,6 +80,7 @@
 		4BE0D3872601462500086375 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		4BE0D389260284F200086375 /* StopListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopListService.swift; sourceTree = "<group>"; };
 		4BE0D38B26028B2900086375 /* StopList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopList.swift; sourceTree = "<group>"; };
+		4BE0D38D2603D98A00086375 /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
 		63EED13525F947680083C82B /* CocktailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailService.swift; sourceTree = "<group>"; };
 		63EED13925F9539D0083C82B /* AddOrEditCocktailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrEditCocktailViewController.swift; sourceTree = "<group>"; };
 		63EED13C25FA02130083C82B /* AddOrEditCocktailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrEditCocktailViewModel.swift; sourceTree = "<group>"; };
@@ -305,6 +307,7 @@
 				63EED13E25FA83C40083C82B /* StringExtensions.swift */,
 				63EED14025FA83EC0083C82B /* UINavigationControllerExtensions.swift */,
 				4BE0D3872601462500086375 /* UIViewControllerExtensions.swift */,
+				4BE0D38D2603D98A00086375 /* UIImageExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -474,6 +477,7 @@
 				4BE0D381260131DA00086375 /* CocktailDetailsViewModel.swift in Sources */,
 				4BC7F04C25F54F6F003854C4 /* UIColorExtensions.swift in Sources */,
 				4BE0D3882601462500086375 /* UIViewControllerExtensions.swift in Sources */,
+				4BE0D38E2603D98A00086375 /* UIImageExtensions.swift in Sources */,
 				4B6CA60225E42A4700DBA185 /* Config.swift in Sources */,
 				63EED14125FA83EC0083C82B /* UINavigationControllerExtensions.swift in Sources */,
 				4BC7F04E25F551D1003854C4 /* Constants.swift in Sources */,

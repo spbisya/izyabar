@@ -22,7 +22,7 @@ class StopListService: StopListServiceProtocol {
         AF.request(Config.stopListURL).responseObject { (response: AFDataResponse<StopList>) in
             switch response.result {
             case .success(let stopList):
-                complete(stopList.ids ?? [], nil)
+                complete(stopList.ids, nil)
             case .failure(let error):
                 complete(nil, error)
             }

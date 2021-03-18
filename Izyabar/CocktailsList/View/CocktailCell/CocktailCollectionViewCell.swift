@@ -50,16 +50,23 @@ class CocktailCollectionViewCell: UICollectionViewCell {
         shadowView.layer.shadowPath = UIBezierPath(roundedRect: cocktailImageView.bounds, cornerRadius: 10).cgPath
     }
     
-    func configure(with cocktailItem: CocktailItem) {
+    func configure(with cocktailItem: CocktailItem, _ isInStopList: Bool) {
         cocktailImageView.image = nil
         if let url = URL(string: cocktailItem.image ?? "") {
             shadowView.isHidden = true
-            Nuke.loadImage(with: url, into: cocktailImageView, completion: {_ in
+            Nuke.loadImage(with: url, into: cocktailImageView, completion: { (result: Result<ImageResponse, ImagePipeline.Error>) in
                 self.shadowView.isHidden = false
+                if isInStopList {
+                    guard let currentImage = try? result.get().image.grayScaleImage() else { return }
+                    self.cocktailImageView.image = currentImage
+                }
             })
         }
         nameLabel.text = cocktailItem.name
         descriptionLabel.text = cocktailItem.descriptionShort
+        
+        nameLabel.alpha = isInStopList ? 0.5 : 1
+        descriptionLabel.alpha = isInStopList ? 0.5 : 1
     }
     
     class var identifier: String { return "CocktailCollectionViewCell" }

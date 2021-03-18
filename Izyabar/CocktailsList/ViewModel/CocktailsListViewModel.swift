@@ -15,15 +15,18 @@ class CocktailsListViewModel {
     var loadCocktailsClosure: ((_ cocktails: [CocktailItem]) -> Void)?
     var errorClosure: ((_ error: CocktailError) -> Void)?
     var successfulLoginClosure: (() -> Void)?
+    var loadStopListClosure: ((_ stopListIds: [Int]) -> Void)?
     
     // MARK: Properties
     
     private let cocktailService: CocktailServiceProtocol
+    private let stopListService: StopListServiceProtocol
     
     // MARK: Constructor
     
-    init(cocktailService: CocktailServiceProtocol = CocktailService()) {
+    init(cocktailService: CocktailServiceProtocol = CocktailService(), stopListService: StopListServiceProtocol = StopListService()) {
         self.cocktailService = cocktailService
+        self.stopListService = stopListService
     }
     
     // MARK: Public methods
@@ -43,5 +46,15 @@ class CocktailsListViewModel {
     func loginAsEditor() {
         AuthDataManager.enableEditorMode()
         self.successfulLoginClosure?()
+    }
+    
+    func loadStopList() {
+        stopListService.loadStopList(complete: { [weak self] (stopListIds, error) in
+            guard let nonNullStopList = stopListIds else {
+                self?.errorClosure?(CocktailError.generateError(for: error))
+                return
+            }
+            self?.loadStopListClosure?(nonNullStopList)
+        })
     }
 }
