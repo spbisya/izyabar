@@ -11,9 +11,13 @@ import SkeletonView
 
 final class CocktailsListDataSource: NSObject {
     
+    // MARK: Properties
+    
     private var items: [CocktailItem] = []
     private var stopListIds: [Int] = []
     private var onCellClickClosure: ( (CocktailItem) -> Void)?
+    
+    // MARK: Public methods
     
     func attach(to view: UICollectionView, onCellClickClosure: @escaping (CocktailItem) -> Void) {
         view.isUserInteractionEnabled = true
@@ -67,6 +71,10 @@ final class CocktailsListDataSource: NSObject {
             return stopListIds.contains(cocktail.id ?? 0)
         }
         items.append(contentsOf: disabledCocktails)
+    }
+    
+    func cocktailAt(index: Int) -> CocktailItem? {
+        return index < items.count ? items[index] : nil
     }
 }
 

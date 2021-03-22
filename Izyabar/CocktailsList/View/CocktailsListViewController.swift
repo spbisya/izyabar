@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CocktailsListViewController: UIViewController {
+class CocktailsListViewController: UIViewController, UIGestureRecognizerDelegate {
     
     // MARK: IBOutlets
     
@@ -53,6 +53,8 @@ class CocktailsListViewController: UIViewController {
         dataSource.attach(to: cocktailsView) { cocktail in
             self.showCocktailDetailsViewController(with: cocktail)
         }
+        
+        setupForceTouch()
     }
     
     private func initViewModel() {
@@ -148,6 +150,39 @@ class CocktailsListViewController: UIViewController {
         self.setupRightButton()
     }
     
+    private func reloadDataAndScrollTo(_ index: Int) {
+        cocktailsView.reloadData()
+        cocktailsView.scrollToItem(at: IndexPath(item: index, section: 0), at: .centeredVertically, animated: true)
+    }
+    
+    private func setupLongPress() {
+//        let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
+//        longPressGestureRecognizer.minimumPressDuration = 0.5
+//        longPressGestureRecognizer.delegate = self
+//        longPressGestureRecognizer.delaysTouchesBegan = true
+//        self.cocktailsView?.addGestureRecognizer(longPressGestureRecognizer)
+    }
+    
+    private func setupForceTouch() {
+        let forceGestureRecognizer = ForceGestureRecognizer(forceThreshold: CGFloat(4))
+        forceGestureRecognizer.delegate = self
+        forceGestureRecognizer.addTarget(self, action: #selector(handleForceTouch))
+        self.cocktailsView?.addGestureRecognizer(forceGestureRecognizer)
+    }
+    
+    @objc private func handleForceTouch(gestureRecognizer: ForceGestureRecognizer) {
+        if gestureRecognizer.state != UIGestureRecognizer.State.changed {
+            return
+        }
+        gestureRecognizer.state = .ended
+        
+        let point = gestureRecognizer.location(in: self.cocktailsView)
+        
+        guard let indexPath = (self.cocktailsView?.indexPathForItem(at: point)),
+              let cocktail = dataSource.cocktailAt(index: indexPath.row) else { return }
+        print(cocktail.name ?? "unknown name")
+    }
+    
     // MARK: Navigation
     
     private func showCocktailDetailsViewController(with cocktail: CocktailItem) {
@@ -160,11 +195,6 @@ class CocktailsListViewController: UIViewController {
     
     @objc private func showAddCocktailViewController() {
         showAddCocktailsViewController()
-    }
-    
-    private func reloadDataAndScrollTo(_ index: Int) {
-        cocktailsView.reloadData()
-        cocktailsView.scrollToItem(at: IndexPath(item: index, section: 0), at: .centeredVertically, animated: true)
     }
 }
 

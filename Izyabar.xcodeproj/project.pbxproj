@@ -36,6 +36,7 @@
 		4BE0D38A260284F300086375 /* StopListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE0D389260284F200086375 /* StopListService.swift */; };
 		4BE0D38C26028B2900086375 /* StopList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE0D38B26028B2900086375 /* StopList.swift */; };
 		4BE0D38E2603D98A00086375 /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE0D38D2603D98A00086375 /* UIImageExtensions.swift */; };
+		4BE0D3902608FB4F00086375 /* ForceGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE0D38F2608FB4F00086375 /* ForceGestureRecognizer.swift */; };
 		63EED13625F947680083C82B /* CocktailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EED13525F947680083C82B /* CocktailService.swift */; };
 		63EED13A25F9539D0083C82B /* AddOrEditCocktailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EED13925F9539D0083C82B /* AddOrEditCocktailViewController.swift */; };
 		63EED13D25FA02130083C82B /* AddOrEditCocktailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EED13C25FA02130083C82B /* AddOrEditCocktailViewModel.swift */; };
@@ -81,6 +82,7 @@
 		4BE0D389260284F200086375 /* StopListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopListService.swift; sourceTree = "<group>"; };
 		4BE0D38B26028B2900086375 /* StopList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopList.swift; sourceTree = "<group>"; };
 		4BE0D38D2603D98A00086375 /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
+		4BE0D38F2608FB4F00086375 /* ForceGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForceGestureRecognizer.swift; sourceTree = "<group>"; };
 		63EED13525F947680083C82B /* CocktailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailService.swift; sourceTree = "<group>"; };
 		63EED13925F9539D0083C82B /* AddOrEditCocktailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrEditCocktailViewController.swift; sourceTree = "<group>"; };
 		63EED13C25FA02130083C82B /* AddOrEditCocktailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrEditCocktailViewModel.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 				63EED14225FA85EF0083C82B /* KeyboardContentInsetsBuilder.swift */,
 				63EED14725FAA02D0083C82B /* AddCocktailDelegate.swift */,
 				4BE0D37725FE6F4200086375 /* EditCocktailDelegate.swift */,
+				4BE0D38F2608FB4F00086375 /* ForceGestureRecognizer.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -472,6 +475,7 @@
 				4B8034D525DB014E00FE00AB /* CocktailCollectionViewCell.swift in Sources */,
 				63EED13D25FA02130083C82B /* AddOrEditCocktailViewModel.swift in Sources */,
 				4B2CA99F25D338F900C8B391 /* SceneDelegate.swift in Sources */,
+				4BE0D3902608FB4F00086375 /* ForceGestureRecognizer.swift in Sources */,
 				63EED13625F947680083C82B /* CocktailService.swift in Sources */,
 				63EED13A25F9539D0083C82B /* AddOrEditCocktailViewController.swift in Sources */,
 				4BE0D381260131DA00086375 /* CocktailDetailsViewModel.swift in Sources */,
